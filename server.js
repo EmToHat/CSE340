@@ -10,6 +10,7 @@ const expressLayouts = require("express-ejs-layouts") // tells the application t
 const env = require("dotenv").config()
 const app = express()
 const static = require("./routes/static")
+const inventoryRoute = require("./routes/inventoryRoute")
 const baseController = require("./controllers/baseController")
 
 /* ***********************
@@ -24,6 +25,9 @@ app.set("layout", "./layouts/layout") // not at views root, when express ejs lay
  * Routes
  *************************/
 app.use(static) // the app itself will use this resource, this line of code allows the app to know where the public folder is located and that all of its subfolders will be used for static files.
+
+// Inventory routes
+app.use("/inv", inventoryRoute)
 
 // Index Route
 app.get("/", baseController.buildHome)
