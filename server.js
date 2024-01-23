@@ -12,6 +12,8 @@ const app = express()
 const static = require("./routes/static")
 const inventoryRoute = require("./routes/inventoryRoute")
 const baseController = require("./controllers/baseController")
+const Util = require('./utilities/'); // Adjust the path based on your project structure
+
 
 /* ***********************
  * View Engine and Templates
@@ -26,24 +28,40 @@ app.set("layout", "./layouts/layout") // not at views root, when express ejs lay
  *************************/
 app.use(static) // the app itself will use this resource, this line of code allows the app to know where the public folder is located and that all of its subfolders will be used for static files.
 
+// Index route
+app.get("/", Util.handleErrors(baseController.buildHome))
+
 // Inventory routes
 app.use("/inv", inventoryRoute)
 
-// Index Route
-app.get("/", baseController.buildHome)
 
-/*
-app.get("/", function(req, res) {
-  res.render("index", {title: "Home"})
+/* ***********************
+* Basic Error Handling Activity
+* 
+* File Not Found Route - must be last route in list
+* Place after all routes.
+*************************/
+// File Not Found Route - must be last route in list
+app.use(async (req, res, next) => {
+  next({status: 404, message: 'Sorry, we appear to have lost that page.'});
+});
+
+
+/* ***********************
+* Express Error Handler
+* Place after all other middleware
+*************************/
+app.use(async (err, req, res, next) => {
+  let nav = await Util.getNav()
+  console.error(`Error at: "${req.originalUrl}": ${err.message}`)
+  if(err.status == 404){ message = err.message} else {message = 'Oh no! There was a crash. Maybe try a different route?'}
+  res.render("errors/error", {
+    title: err.status || 'Server Error',
+    message,
+    nav
+  })
 })
-*/
 
-  // app.get - the express app. watches the "get" object within the HTTP Request for a particular route.
-  // "/" - This is the route being watched, indicates the base route of the application or the route which has no specific resource requested.
-  // function(req, res){ - A JavaScript function that takes the request and response objects as parameters.
-  // res.render() - The "res" is the response object, while "render()" is an Express function that will retrieve the specified view - "index" - to be sent back to the browser.
-  // {title: "Home" } - The curly braces are an object (treated like a variable), which holds a name - value pair. This object supplies the value that the "head" partial file expects to receive. The object is passed to the view.
-  // }) - The right curly brace closes the function, while the right parentheses closes the "get" route.
 
 /* ***********************
  * Local Server Information
