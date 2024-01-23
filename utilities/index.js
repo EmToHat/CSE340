@@ -8,8 +8,8 @@ const Util = {}
  ************************** */
 Util.getNav = async function (req, res, next) {
     let data = await invModel.getClassifications()
-    let list = "<ul>"
-    list += '<li><a href="/" title="Home page">Home</a></li>'
+    let list = "<ul class='navigation__list'>"
+    list += '<li><a href="/" title="Home page" class="navigation__list--item">Home</a></li>'
     data.rows.forEach((row) => {
     list += "<li>"
     list +=
@@ -17,7 +17,7 @@ Util.getNav = async function (req, res, next) {
         row.classification_id +
         '" title="See our inventory of ' +
         row.classification_name +
-        ' vehicles">' +
+        ' vehicles" class="navigation__list--item">' +
         row.classification_name +
         "</a>"
     list += "</li>"

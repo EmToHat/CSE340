@@ -1,0 +1,25 @@
+<!--
+    3 Sections 
+    Content Heading
+    Message
+    Inventory items display
+-->
+
+
+<!-- Content Heading -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+    } %>
+
+
+
+<!-- Message Block -->
+<!-- # this comment mark disables the code below. Will later be replaced with - -->
+<%# messages() %>
+
+
+
+<!-- Inventory Items Display -->
+<%- grid %>
