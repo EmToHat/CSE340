@@ -33,16 +33,20 @@ Util.getNav = async function (req, res, next) {
 Util.buildClassificationGrid = async function(data){
     let grid
     if(data.length > 0){
-      grid = '<ul id="inv-display">'
+      grid = '<ul id="inv-display__ul">'
       data.forEach(vehicle => { 
         grid += '<li>'
+        grid+= '<div class="inv-display__image-info-container">' // start of image-info div
+        grid += '<div class ="inv-display__image-container">' // start of image div
         grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
-        + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
-        + 'details"><img src="' + vehicle.inv_thumbnail 
+        + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model
+        + ' details" class="inv-display__image"><img src="' + vehicle.inv_thumbnail 
         +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
         +' on CSE Motors" /></a>'
-        grid += '<div class="namePrice">'
-        grid += '<hr />'
+        grid += '</div>'; // end of image div
+        
+        grid += '<div class="namePrice">' // start of namePrice div
+        //grid += '<hr />'
         grid += '<h2>'
         grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View ' 
         + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">' 
@@ -50,7 +54,8 @@ Util.buildClassificationGrid = async function(data){
         grid += '</h2>'
         grid += '<span>$' 
         + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
-        grid += '</div>'
+        grid += '</div>'  // end of namePrice div
+        grid += '</div>' // end of image-info div
         grid += '</li>'
       })
       grid += '</ul>'
