@@ -12,7 +12,7 @@ const app = express()
 const static = require("./routes/static")
 const inventoryRoute = require("./routes/inventoryRoute")
 const baseController = require("./controllers/baseController")
-const Util = require('./utilities/'); // Adjust the path based on your project structure
+const Util = require('./utilities/');
 
 
 /* ***********************
