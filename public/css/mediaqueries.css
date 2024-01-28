@@ -1,0 +1,24 @@
+/* Mobile */
+@media screen and (width <= 768px) {
+    /* Styles for screens up to 767 pixels wide (typically mobile devices) */
+    /* ... */
+  }
+  
+  /* Tablet */
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    /* Styles for screens between 768 and 991 pixels wide (typically tablets) */
+    /* ... */
+  }
+  
+  /* Laptop */
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    /* Styles for screens between 992 and 1199 pixels wide (typically laptops) */
+    /* ... */
+  }
+  
+  /* Desktop */
+  @media screen and (min-width: 1200px) {
+    /* Styles for screens 1200 pixels wide and above (typically desktops) */
+    /* ... */
+  }
+  

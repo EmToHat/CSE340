@@ -38,25 +38,25 @@ Util.buildClassificationGrid = async function(data){
 
     // an "if" to see if the array is not empty.
     if(data.length > 0){
-      grid = '<ul id="inv-display__ul">'
+      grid = '<ul id="vehicle-grid__ul-style" class="vehicle-grid__ul">'
 
       // sets up a "forEach" loop, to break each element of the data array into a vehicle object.
       data.forEach(vehicle => { 
-        grid += '<li>' // Start of li
-          grid+= '<div class="vehicle-grid-card__container inv-display__image-info-container">' // start of vehicle grid div
+        grid += '<li class="vehicle-grid__li">' // Start of li
+          grid+= '<div class="vehicle-grid-card__container">' // start of vehicle grid div inv-display__image-info-container
             
-            grid += '<div class ="vehicle-grid-card__image inv-display__image-container">' // start of vehicle grid image div
+            grid += '<div class ="vehicle-grid-card__image-container">' // start of vehicle grid image-container div
               grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
               + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model
               + ' details" class="inv-display__image"><img src="' + vehicle.inv_thumbnail 
               +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
-              +' on CSE Motors" /></a>'
-            grid += '</div>'; // End of vehicle grid image div
+              +' on CSE Motors" class="vehicle-grid-card__image"/></a>'
+            grid += '</div>'; // End of vehicle grid image-container div
           
             grid += '<div class="vehicle-grid-card__text namePrice">' // start of namePrice div
               grid += '<hr />'
 
-              grid += '<h2>'
+              grid += '<h2 class="vehicle-grid-card__title">'
                 grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View ' 
                 + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">' 
                 + vehicle.inv_make + ' ' + vehicle.inv_model + '</a>'
