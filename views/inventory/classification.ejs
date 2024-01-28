@@ -10,7 +10,7 @@
 <% if (title) { %>
     <div class="content__heading"><h1><%= title %></h1></div>
     <% } else {
-      res.redirect('/')
+      res.redirect('/') // redirects the response object to the default index route, to deliver the home view.
     } %>
 
 

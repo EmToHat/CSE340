@@ -10,8 +10,8 @@ const expressLayouts = require("express-ejs-layouts") // tells the application t
 const env = require("dotenv").config()
 const app = express()
 const static = require("./routes/static")
-const inventoryRoute = require("./routes/inventoryRoute")
-const baseController = require("./controllers/baseController")
+const inventoryRoute = require("./routes/inventoryRoute") // brings inventoryRoute.js file into scope.
+const baseController = require("./controllers/baseController") // brings baseController.js into Scope.
 const Util = require('./utilities/');
 
 
@@ -32,6 +32,10 @@ app.use(static) // the app itself will use this resource, this line of code allo
 app.get("/", Util.handleErrors(baseController.buildHome))
 
 // Inventory routes
+  // "app.use()" is an Express function that directs the app. to use the resources passed in as params.
+  // "/inv" is a keyword in our app., which indicates that a route containning this word will use this route file to work with inventory-related processes.
+  // "inventoryRoute" a variable representing the inventoryRoute.js file
+  // Any route that starts with "/inv" will be redirected to the inventoryRoute.js file.
 app.use("/inv", inventoryRoute)
 
 
