@@ -5,50 +5,8 @@
 
 
 /*------------------------------------------------------------------------------*/
-/*                                  Home view                                   */
+/*                            Header Styles                                     */
 /*------------------------------------------------------------------------------*/
-
-
-/******* ALL ***************/
-.section__welcome--title,
-.section__reviews--title,
-.section__upgrades--title,
-.header__title--site-name {
-  font-family: var(--font-family);
-  color: var(--drk-gray);
-  font-weight: 800;
-}
-
-.header__login--link,
-.navigation__list,
-.section__welcome--list-highlights,
-.section__reviews--list-reviews,
-.section__upgrades--list-upgrades,
-.footer__copyright,
-.button {
-  font-family: var(--font-family);
-}
-
-.section__welcome--title,
-.section__reviews--title,
-.section__upgrades--title,
-.header__login--link {
-  font-size: 18px;
-}
-
-.section__welcome--list-highlights,
-.section__upgrades--list-upgrades,
-.navigation__list {
-  list-style-type: none;
-}
-
-.section__container {
-  display: flex;
-  flex-direction: column;
-  margin: 8px;
-}
-
-/*--------------- HEADER -----------------*/
 #header--container {
     display: flex;
     flex-direction: row;
@@ -60,6 +18,7 @@
 .header__title--site-name {
     font-size: 28px;
     padding: 10px;
+    font-weight: 700;
 }
 
 .header__login--link {
@@ -76,13 +35,22 @@
     text-decoration: none;
     color: var(--drk-gray);
 }
-/*------------------------------------*/
 
 
-/*--------------- NAV -----------------*/
+/*------------------------------------------------------------------------------*/
+/*                            Navigation Styles                                 */
+/*------------------------------------------------------------------------------*/
 nav {
-    background-color: var(--drk-gray);
-    width: 100%;
+  background-color: var(--title-clr);
+  width: 100%;
+}
+
+.navigation__list--item {
+  font-family: var(--font-family-openSans);
+  color: var(--nav-clr);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 800;
 }
 
 .navigation__list {
@@ -93,220 +61,16 @@ nav {
 }
 
 .navigation__list--item {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 800;
     justify-content: space-evenly;
 }
-/*------------------------------------*/
-
-
-/*--------------- MAIN -----------------*/
-.section__welcome--container,
-.section__reviews--container,
-.section__upgrades--container {
-    padding: 10px;
-}
-
-/* -- Welcome Section -- */
-.section__welcome--title {
-    font-size: 20px;
-}
-
-.section__welcome--img-highlights-container {
-    position: relative;
-}
-
-.section__welcome--highlights-container {
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.6);
-    color: var(--blue);
-    width: 50%;
-    font-size: smaller;
-    padding: 8px;
-    border-radius: 8px;
-}
-
-.section__welcome--subtitle{
-    font-family: var(--font-family);
-    font-weight: 800;
-    font-size: larger;
-}
-
-.section__welcome--list-highlights {
-    font-weight: 700;
-}
-
-.section__welcome--img-container {
-    margin-left: 30px;
-}
-
-
-/* -- Reviews Section -- */
-.section__reviews--list-reviews {
-    margin-left: 8%;
-    font-size: smaller;
-}
-
-
-/* -- Upgrades Section -- */
-.section__upgrades--img-link-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    text-align: center;
-}
-
-.section__upgrades--img-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--blue);
-    border: .5px solid var(--drk-gray);
-    height: 100px;
-    width: 110%;
-}
-
-.section__upgrades--list-upgrades {
-    display: grid;
-    grid-gap: 30px;
-    grid-template:
-    'flux flame'
-    'bumper hub';
-}
-
-.section__upgrades--flux-cap {
-    grid-area: flux;
-}
-
-.section__upgrades--flame {
-    grid-area: flame;
-}
-
-.section__upgrades--bumper {
-    grid-area: bumper;
-}
-
-.section__upgrades--hub-cap {
-    grid-area: hub;
-}
-
-.section__upgrades--link,
-.footer__copyright {
-    font-size: smaller;
-}
-
-/*--------------------------------------*/
-
-
-/*-------------- FOOTER ----------------*/
-/*--------------------------------------*/
-
-
-
-
 
 /*------------------------------------------------------------------------------*/
-/*                                  Inventory view(s)                           */
+/*                              Footer Styles                                   */
 /*------------------------------------------------------------------------------*/
-  .vehicle-grid__ul {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr); /* One column for smaller screens */
-  }
-
-.vehicle-grid__li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-  .content__heading {
-    margin-bottom: 20px;
-  }
-
-
-
-
-
-
-
-
-/*------------------------------------------------------------------------------*/
-/*                               @Media Queries                                 */
-/*------------------------------------------------------------------------------*/
-
-/*---------- Min Width 768px ------------*/
-/*
-@media (min-width: 768px) {
-
-
-    .section__container {
-    display: grid;
-    grid-gap: 30px;
-    grid-template:
-        'welcome welcome'
-        'upgrades reviews';
-    }
-  
-    .section__welcome--container {
-      grid-area: welcome;
-    }
-  
-    .section__reviews--container {
-      grid-area: reviews;
-    }
-  
-    .section__upgrades--container {
-      grid-area: upgrades;
-    }
-  
-      
-    .section__welcome--highlights-container {
-      width: 20%;
-    }
-  
-      
-    .section__upgrades--img-container {
-      width: auto;
-    }
-  }
-*/
-/*--------------------------------------*/
-
-
-@media screen and (min-width: 600px) {
-  .vehicle-grid__ul {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive columns */
-  }
-
-  .section__container {
-    display: grid;
-    grid-gap: 30px;
-    grid-template:
-        'welcome welcome'
-        'upgrades reviews';
-    }
-  
-    .section__welcome--container {
-      grid-area: welcome;
-    }
-  
-    .section__reviews--container {
-      grid-area: reviews;
-    }
-  
-    .section__upgrades--container {
-      grid-area: upgrades;
-    }
-  
-      /* Welcome Section */
-    .section__welcome--highlights-container {
-      width: 20%;
-    }
-  
-      /* Upgrades Section */
-    .section__upgrades--img-container {
-      width: auto;
-    }
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  font-size: small;
 }
