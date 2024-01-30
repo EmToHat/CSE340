@@ -3,111 +3,150 @@
 /*------------------------------------------------------------------------------*/
 @import url('./style.css');
 
-
 /*------------------------------------------------------------------------------*/
 /*                                index.ejs file                                */
 /*------------------------------------------------------------------------------*/
-.section__welcome--container,
-.section__reviews--container,
-.section__upgrades--container {
-    padding: 10px;
-}
 
-/* -- Welcome Section -- */
-.section__welcome--title {
-    font-size: 20px;
-}
 
-.section__welcome--img-highlights-container {
+/*------------------------------------------------------------------------------*/
+/*                                Sections Wrapper                              */
+/*------------------------------------------------------------------------------*/
+
+
+
+/*------------------------------------------------------------------------------*/
+/*                                Welcome Section                               */
+/*------------------------------------------------------------------------------*/
+
+.sec-welcome__wrapper {
     position: relative;
 }
 
-.section__welcome--highlights-container {
+/*sec-welcome__title*/
+
+.sec-welcome-dmc__wrapper {
+    position: relative;
+}
+
+.sec-welcome-dmc__card {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.6);
-    color: var(--blue);
     width: 50%;
     font-size: smaller;
     padding: 8px;
     border-radius: 8px;
 }
 
-.section__welcome--subtitle{
+.sec-welcome-dmc__title {
     font-weight: 800;
     font-size: larger;
-    color: var(--highlights-text__clr);
 }
 
-.section__welcome--list-highlights {
+.sec-welcome-dmc__content {
+    list-style-type: none;
     font-weight: 700;
-    color: var(--highlights-text__clr);
 }
 
-.section__welcome--img-container {
+.sec-welcome-dmc__img-wrapper {
     margin-left: 30px;
 }
 
-/* -- Reviews Section -- */
-.section__reviews--list-reviews {
+/*sec-welcome-dmc__img*/
+
+
+
+/*------------------------------------------------------------------------------*/
+/*                                Reviews Section                               */
+/*------------------------------------------------------------------------------*/
+/*sec-reviews__wrapper*/
+
+/*sec-reviews__title*/
+
+.sec-reviews__content {
     margin-left: 8%;
     font-size: smaller;
 }
 
-/* -- Upgrades Section -- */
-.section__upgrades--img-link-container {
+
+
+/*------------------------------------------------------------------------------*/
+/*                                Upgrades Section                              */
+/*------------------------------------------------------------------------------*/
+.sec {
+    margin: 10px;
+}
+
+.index__title {
+    font-size: larger;
+}
+
+/*.sec-upgrades-ul__wrapper */
+
+.sec-upgrades__content {
+    list-style-type: none;
+    display: grid;
+    grid-template-areas: 
+        "flux flame"
+        "bumper hub";
+}
+
+.sec-upgrades__card-wrapper {
+    /* Flex Box */
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    text-align: center;
-}
-
-.section__upgrades--img-container {
-    display: flex;
-    justify-content: center;
     align-items: center;
-    background-color: var(--blue);
-    border: .5px solid var(--drk-gray);
-    height: 100px;
-    width: 110%;
+    justify-content: center;
+    margin-bottom: 8px;
 }
 
-.section__upgrades--list-upgrades {
-    display: grid;
-    grid-gap: 30px;
-    grid-template:
-    'flux flame'
-    'bumper hub';
+.sec-upgrade__card {
+    /* Flex Box */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    width: 150px;
+    height: 130px;
+    background: #1890FF;
+    border: 2px solid #093966;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
 }
 
-.section__upgrades--flux-cap {
+.sec-upgrade-card__img-wrapper {
+    /* Flex Box */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Sizing */
+    width: 80px;
+    height: 80px;
+}
+
+.sec-upgrade__subtitle {
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+
+    color: #000000;
+}
+
+.sec-upgrades__card-wrapper--flux  {
     grid-area: flux;
 }
 
-.section__upgrades--flame {
+.sec-upgrades__card-wrapper--flame{
     grid-area: flame;
 }
 
-.section__upgrades--bumper {
+.sec-upgrades__card-wrapper--bumper {
     grid-area: bumper;
 }
 
-.section__upgrades--hub-cap {
+.sec-upgrades__card-wrapper--hub {
     grid-area: hub;
-}
-
-.section__upgrades--link,
-.footer__copyright {
-    font-size: smaller;
-}
-
-.section__welcome--list-highlights,
-.section__upgrades--list-upgrades,
-.navigation__list {
-  list-style-type: none;
-}
-
-.section__container {
-  display: flex;
-  flex-direction: column;
-  margin: 8px;
 }

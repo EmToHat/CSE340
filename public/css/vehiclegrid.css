@@ -61,6 +61,7 @@
     font-size: medium;
     font-family: var(--font-family-openSans);
     padding: 10px;
+    color: var(--title-clr);
   }
 
 .content__heading {

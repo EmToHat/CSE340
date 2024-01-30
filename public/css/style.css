@@ -43,6 +43,9 @@
   /*DMC Information Card*/
   --dmc-card__clr-bg: rgba(255, 255, 255, 0.5);
 
+  /* DMC Information Card */
+  --dmc-info-card__clr-txt: #1890FF;
+
   /* Upgrade Card*/
   --upgrade-card__clr-bg: #1890FF;
   --upgrade-card__clr-outline: #093966;
@@ -65,15 +68,50 @@
   box-sizing: border-box;
 }
 
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+.card {
+  box-shadow: 0px 10px 10px var(--card__drop-shadow-clr);
+}
+
+
+/*------------------------------------------------------------------------------*/
+/*                                Fonts                                         */
+/*------------------------------------------------------------------------------*/
+.header__title--site-name,
+.header__login--link,
+.footer__copyright,
+.content__heading,
+.font-c,
+.vehicle-detail-card__title,
+.vehicle-detail-card__content {
+  font-family: var(--font-family-catamaran);
+  color: var(--title-clr);
+}
+
+.btn,
+.font-op {
+  font-family: var(--font-family-openSans);
+  color: var(--title-clr);
+}
+
+.footer__copyright {
+  font-size: smaller;
+}
+
+
+/*------------------------------------------------------------------------------*/
+/*                                Buttons                                       */
+/*------------------------------------------------------------------------------*/
 .btn {
   height: auto;
   width: auto;
   padding: 2px;
   text-align: center;
-  background-color: var(--primary-button-default__bg-clr);
-  border: 2px solid var(--primary-button-default__border-clr);
   border-radius: 8px;
-  color: var(--primary-button-default__txt-clr);
   font-weight: 700;
 }
 
@@ -82,51 +120,27 @@
   width: auto;
   padding: 2px;
   text-align: center;
-  background-color: var(--primary-button-hover__bg-clr);
-  border: 2px solid var(--primary-button-default__border-clr);
   border-radius: 8px;
   font-weight: 700;
   cursor: pointer;
+}
+
+.sec-welcome-dmc__btn-default {
+  background-color: var(--primary-button-default__bg-clr);
+  border: 2px solid var(--primary-button-default__border-clr);
+  color: var(--primary-button-default__txt-clr);
+}
+
+.sec-welcome-dmc__btn-default:hover {
+  background-color: var(--primary-button-hover__bg-clr);
+  border: 2px solid var(--primary-button-default__border-clr);
   color: var(--primary-button-hover__txt-clr);
 }
 
-img {
-  height: auto;
-  max-width: 100%;
-}
-
-body {
-  color: var(--title-clr);
-}
-/*------------------------------------------------------------------------------*/
-/*                            Catamaran Font-Family Styles                      */
-/*------------------------------------------------------------------------------*/
-.header__title--site-name,
-.header__login--link,
-.footer__copyright,
-.content__heading,
-.section__welcome--title,
-.section__reviews--title,
-.section__upgrades--title,
-.vehicle-detail-card__title,
-.vehicle-detail-card__content {
-  font-family: var(--font-family-catamaran);
-}
-
-/*------------------------------------------------------------------------------*/
-/*                            Open Sans Font-Family Styles                      */
-/*------------------------------------------------------------------------------*/
-.btn,
-.section__welcome--subtitle,
-.section__welcome--list-highlights,
-.section__upgrades--list-upgrades,
-.section__reviews--list-reviews,
-.section__welcome--list-highlights {
-  font-family: var(--font-family-openSans);
-}
 
 
 
-.content__heading {
-  margin-bottom: 20px;
+.sec-welcome-dmc__card {
+  color: var(--dmc-info-card__clr-txt);
+  background-color: rgba(255, 255, 255, 0.6);
 }

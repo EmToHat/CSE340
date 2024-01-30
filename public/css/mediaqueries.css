@@ -3,7 +3,7 @@
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive columns */
   }
 
-  .section__container {
+  .sections__container {
     display: grid;
     grid-gap: 30px;
     grid-template:

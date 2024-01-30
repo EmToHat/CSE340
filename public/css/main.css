@@ -58,6 +58,7 @@ nav {
     flex-direction: row;
     justify-content: space-evenly;
     padding: 15px;
+    list-style-type: none;
 }
 
 .navigation__list--item {
