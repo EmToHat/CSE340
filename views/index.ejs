@@ -1,90 +1,118 @@
-<div class="sections__wrapper">
-    <div class="sec sec-welcome__wrapper">
-        <h1 class="font-c index__title sec-welcome__title">Welcome to CSE Motors!</h1>
-        <div class="sec-welcome-dmc__wrapper">
-            <div class="card sec-welcome-dmc__card">
-                <h2 class="font-op sec-welcome-dmc__title">DMC Delorean</h2>
-                <div class="font-op sec-welcome-dmc-ul__wrapper">
-                    <ul class="sec-welcome-dmc__content">
-                        <li>3 Cup holders</li>
-                        <li>Superman doors</li>
-                        <li>Fuzzy dice!</li>
-                    </ul>
+<!-- block__elem1 -->
+<h1 class="title title__index">Welcome to CSE Motors!</h1>
+
+<!--<h1> <%- messages() %> </h1>-->
+
+<!-- Block: section -->
+<section class="section">
+    <!-- Block: card -->
+    <div class="card card--transparent">
+        <!-- Element within Block: card__title -->
+        <h2 class="card__title">DMC Delorean</h2>
+        <!-- Block: content -->
+        <div class="content">
+            <!-- Element within Block: content__ul -->
+            <ul class="content__ul content-detail__ul">
+                <li>3 Cup holders</li>
+                <li>Superman doors</li>
+                <li>Fuzzy dice!</li>
+            </ul>
+            <!-- Element within Block: content__btn -->
+            <button class="btn content__btn content__btn--default">Own Today</button>
+        </div>
+    </div>
+    <div class="section__img-wrapper"><img src="/images/vehicles/delorean.jpg" alt="A gray and white futuristic car." class="section__image"></div>
+    <!-- Element within Block: section__image -->
+</section>
+
+<!-- Block: section -->
+<section class="section section-reviews">
+    <!-- Element within Block: section__title -->
+    <h2 class="section__title">DMC Delorean Reviews</h2>
+    <!-- Block: content -->
+    <div class="content">
+        <!-- Element within Block: content__ul -->
+        <ul class="content__ul content-reviews__ul">
+            <li>"So fast it's almost like traveling in time." (4/5)</li>
+            <li>"Coolest ride on the road." (4/5)</li>
+            <li>"I'm feeling McFly!" (5/5)</li>
+            <li>"The most futuristic ride of our day." (4.5/5)</li>
+            <li>"80s livin and I love it!" (5/5)</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Block: section -->
+<section class="section">
+    <!-- Element within Block: section__title -->
+    <h2 class="section__title">Delorean Upgrades</h2>
+    <!-- Block: content -->
+    <div class="content">
+        <!-- Block: ul -->
+        <ul class="content__ul content-upgrades__ul">
+            <!-- Element within Block: ul__list-item -->
+            <li class="ul__list-item ul__list-item-flux">
+                <!-- Block: list-item-wrapper -->
+                <div class="list-item-wrapper">
+                    <!-- Block: card -->
+                    <div class="card card--blue">
+                        <!-- Element within Block: card__image -->
+                        <div class="card__image-wrapper">
+                            <img src="/images/upgrades/flux-cap.png" alt="A gray square with red and blue shapes inside it." class="card__image">
+                        </div>
+                    </div>
+                    <!-- Element within Block: list-item-wrapper__title -->
+                    <h3 class="list-item-wrapper__title">Flux Cap</h3>
                 </div>
-                <button class="btn sec-welcome-dmc__btn-default font-op">Own Today</button>
-            </div>
+            </li>
 
-            <div class="sec-welcome-dmc__img-wrapper">
-                <img src="/images/vehicles/delorean.jpg" alt="A gray and white futuristic car." class="sec-welcome-dmc__img">
-            </div>
-        </div>
+            <!-- Element within Block: ul__list-item -->
+            <li class="ul__list-item ul__list-item-flame">
+                <!-- Block: list-item-wrapper -->
+                <div class="list-item-wrapper">
+                    <!-- Block: card -->
+                    <div class="card card--blue">
+                        <!-- Element within Block: card__image -->
+                        <div class="card__image-wrapper">
+                            <img src="/images/upgrades/flame.jpg" alt="A large red and yellow flame with a white background." class="card__image">
+                        </div>
+                    </div>
+                    <!-- Element within Block: list-item-wrapper__title -->
+                    <h3 class="list-item-wrapper__title">Flame Decals</h3>
+                </div>
+            </li>
+
+            <!-- Element within Block: ul__list-item -->
+            <li class="ul__list-item ul__list-item-bumper">
+                <!-- Block: list-item-wrapper -->
+                <div class="list-item-wrapper">
+                    <!-- Block: card -->
+                    <div class="card card--blue">
+                        <!-- Element within Block: card__image -->
+                        <div class="card__image-wrapper">
+                            <img src="/images/upgrades/bumper_sticker.jpg" alt="A gray square bumper sticker with the words 'Hello World' written on it." class="card__image">
+                        </div>
+                    </div>
+                    <!-- Element within Block: list-item-wrapper__title -->
+                    <h3 class="list-item-wrapper__title">Bumper Sticker</h3>
+                </div>
+            </li>
+
+            <!-- Element within Block: ul__list-item -->
+            <li class="ul__list-item ul__list-item-hub">
+                <!-- Block: list-item-wrapper -->
+                <div class="list-item-wrapper">
+                    <!-- Block: card -->
+                    <div class="card card--blue">
+                        <!-- Element within Block: card__image -->
+                        <div class="card__image-wrapper">
+                            <img src="/images/upgrades/hub-cap.jpg" alt="A silver hub cap with triangles and bumps in the middle with a white background." class="card__image">
+                        </div>
+                    </div>
+                    <!-- Element within Block: list-item-wrapper__title -->
+                    <h3 class="list-item-wrapper__title">Hub Cap</h3>
+                </div>
+            </li>
+        </ul>
     </div>
-
-    <div class="sec sec-reviews__wrapper">
-        <h1 class="font-c index__title sec-reviews__title">DMC Delorean Reviews</h1>
-        <div class="sec-reviews-ul__wrapper">
-            <ul class="sec-reviews__content font-op">
-                <li>"So fast it's almost like traveling in time." (4/5)</li>
-                <li>"Coolest ride on the road." (4/5)</li>
-                <li>"I'm feeling McFly!" (5/5)</li>
-                <li>"The most futuristic ride of our day." (4.5/5)</li>
-                <li>"80s livin and I love it!" (5/5)</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="sec sec-upgrades__wrapper">
-        <h1 class="font-c index__title sec-upgrades__title">Delorean Upgrades</h1>
-        <div class="sec-upgrades-ul__wrapper">
-            <ul class="sec-upgrades__content font-op">
-                <!-- Flux Capacitor -->
-                <li>
-                    <div class="sec-upgrades__card-wrapper sec-upgrades__card-wrapper--flux">
-                        <div class="sec-upgrade__card">
-                            <div class="sec-upgrade-card__img-wrapper">
-                                <img src="/images/upgrades/flux-cap.png" alt="A gray square with red and blue shapes inside it." class="sec-upgrade-card__img">
-                            </div>
-                        </div>
-                        <h2 class="sec-upgrade__subtitle">Flux Capacitor</h2>
-                    </div>
-                </li>
-
-                <!-- Flame Decals -->
-                <li>
-                    <div class="sec-upgrades__card-wrapper sec-upgrades__card-wrapper--flame">
-                        <div class="sec-upgrade__card">
-                            <div class="sec-upgrade-card__img-wrapper">
-                                <img src="/images/upgrades/flame.jpg" alt="A large red and yellow flame with a white background." class="sec-upgrade-card__img">
-                            </div>
-                        </div>
-                        <h2 class="sec-upgrade__subtitle">Flame Decals</h2>
-                    </div>
-                </li>
-
-                <!-- Bumper Stickers -->
-                <li>
-                    <div class="sec-upgrades__card-wrapper sec-upgrades__card-wrapper--bumper">
-                        <div class="sec-upgrade__card">
-                            <div class="sec-upgrade-card__img-wrapper">
-                                <img src="/images/upgrades/bumper_sticker.jpg" alt="A gray square bumper sticker with the words 'Hello World' written on it." class="sec-upgrade-card__img">
-                            </div>
-                        </div>
-                        <h2 class="sec-upgrade__subtitle">Bumper Stickers</h2>
-                    </div>
-                </li>
-
-                <!-- Hub Caps -->
-                <li>
-                    <div class="sec-upgrades__card-wrapper sec-upgrades__card-wrapper--hub">
-                        <div class="sec-upgrade__card">
-                            <div class="sec-upgrade-card__img-wrapper">
-                                <img src="/images/upgrades/hub-cap.jpg" alt="A silver hub cap with triangles and bumps in the middle with a white background." class="sec-upgrade-card__img">
-                            </div>
-                        </div>
-                        <h2 class="sec-upgrade__subtitle">Hub Caps</h2>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+</section>

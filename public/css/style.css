@@ -8,51 +8,50 @@
 /*                                Root                                          */
 /*------------------------------------------------------------------------------*/
 :root {
-  /*
-  --blue: #33a6c8;
-  --blue-hover: #2a89a5;
-  */
-  --body-margin-default: 10px;
-  --margin-sm: 10px;
-  --margin-md: 10px;
-  --margin-lrg: 20px;
+  /* Margins */
+  --margin-default: 10px;
+  --margin-small: 10px;
+  --margin-medium: 10px;
+  --margin-large: 20px;
 
   /* Button */
-  --primary-button-default__txt-clr: #ffffff;
-  --primary-button-hover__txt-clr: #1890FF;
+  --primary-button-text-default-color: #ffffff;
+  --primary-button-text-hover-color: #1890FF;
 
-  --primary-button-default__bg-clr: #1890FF;
-  --primary-button-hover__bg-clr:#ffffff;
+  --primary-button-bg-default-color: #1890FF;
+  --primary-button-bg-hover-color: #ffffff;
   
-  --primary-button-default__border-clr: #1890FF;
+  --primary-button-border-color: #1890FF;
 
   /* Fonts */
   --font-family-catamaran: 'Catamaran', sans-serif;
   --font-family-openSans: 'Open Sans', sans-serif;
 
   /* Font Colors */
-  --title-clr: #272727;
-  --nav-clr: #ffffff;
+  --title-color: #272727;
+  --nav-color: #ffffff;
+  --nav-bg-color: #272727; 
+  --link-hover-color: #1890FF;
 
   /* Card Drop Shadow */
-  --card__drop-shadow-clr: rgba(0, 0, 0, 0.5);
+  --card-drop-shadow-color: rgba(0, 0, 0, 0.5);
 
   /* Vehicle Grid Card */
-  --vehicle-grid__card-clr-outline: #272727;
-
-  /*DMC Information Card*/
-  --dmc-card__clr-bg: rgba(255, 255, 255, 0.5);
+  --vehicle-grid-card-outline-color: #272727;
 
   /* DMC Information Card */
-  --dmc-info-card__clr-txt: #1890FF;
+  --dmc-card-bg-color: rgba(255, 255, 255, 0.55);
+  --dmc-info-card-text-color: #1890FF;
 
-  /* Upgrade Card*/
-  --upgrade-card__clr-bg: #1890FF;
-  --upgrade-card__clr-outline: #093966;
+  /* Upgrade Card */
+  --upgrade-card-bg-color: #1890FF;
+  --upgrade-card-outline-color: #093966;
 
-  /* Highlights text */
-  --highlights-text__clr:#1890FF;
+  /* Footer */
+  --footer-bg-color: #272727;
+  --footer-text-color: #ffffff;
 }
+
 
 
 /*------------------------------------------------------------------------------*/
@@ -69,33 +68,37 @@
 }
 
 img {
-  height: auto;
+  height: 100%;
   max-width: 100%;
-}
-
-.card {
-  box-shadow: 0px 10px 10px var(--card__drop-shadow-clr);
+  object-fit:cover;
 }
 
 
 /*------------------------------------------------------------------------------*/
 /*                                Fonts                                         */
 /*------------------------------------------------------------------------------*/
-.header__title--site-name,
-.header__login--link,
-.footer__copyright,
-.content__heading,
-.font-c,
-.vehicle-detail-card__title,
-.vehicle-detail-card__content {
+/* Header */
+.header__title-link,
+/* Nav */
+.navigation,
+/* Main */
+.title,
+.card__title,
+.section__title,
+.content__heading {
   font-family: var(--font-family-catamaran);
-  color: var(--title-clr);
 }
 
+/* Header */
+.header__login-link,
+/* Main */
+.content__ul,
+.list-item-wrapper__title,
 .btn,
-.font-op {
+.vehicle-grid-card__price,
+/* Footer */
+.footer__copyright {
   font-family: var(--font-family-openSans);
-  color: var(--title-clr);
 }
 
 .footer__copyright {
@@ -125,22 +128,26 @@ img {
   cursor: pointer;
 }
 
-.sec-welcome-dmc__btn-default {
-  background-color: var(--primary-button-default__bg-clr);
-  border: 2px solid var(--primary-button-default__border-clr);
-  color: var(--primary-button-default__txt-clr);
+/*------------------------------------------------------------------------------*/
+/*                                Cards                                         */
+/*------------------------------------------------------------------------------*/
+.card {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /*box-shadow: -20px 10px 1px 1px var(--card-drop-shadow-color);*/
 }
 
-.sec-welcome-dmc__btn-default:hover {
-  background-color: var(--primary-button-hover__bg-clr);
-  border: 2px solid var(--primary-button-default__border-clr);
-  color: var(--primary-button-hover__txt-clr);
+.grid-cards {
+  height: 200px;
+  width: 130px;
+  box-shadow: 0px 10px 10px var(--card-drop-shadow-color);
+  border-radius: 10px;
 }
 
-
-
-
-.sec-welcome-dmc__card {
-  color: var(--dmc-info-card__clr-txt);
-  background-color: rgba(255, 255, 255, 0.6);
+.content__heading {
+  margin-left: 16px;
+  font-size: medium;
 }

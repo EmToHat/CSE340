@@ -3,150 +3,121 @@
 /*------------------------------------------------------------------------------*/
 @import url('./style.css');
 
-/*------------------------------------------------------------------------------*/
-/*                                index.ejs file                                */
-/*------------------------------------------------------------------------------*/
-
-
-/*------------------------------------------------------------------------------*/
-/*                                Sections Wrapper                              */
-/*------------------------------------------------------------------------------*/
-
-
 
 /*------------------------------------------------------------------------------*/
 /*                                Welcome Section                               */
 /*------------------------------------------------------------------------------*/
-
-.sec-welcome__wrapper {
+.section {
     position: relative;
+    margin: 20px;
 }
 
-/*sec-welcome__title*/
-
-.sec-welcome-dmc__wrapper {
-    position: relative;
+.section__img-wrapper {
+    width: 100%; /* Ensure the image takes up the full width */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 1; /* Set a lower z-index to keep the image below the card */
 }
 
-.sec-welcome-dmc__card {
-    position: absolute;
-    width: 50%;
-    font-size: smaller;
-    padding: 8px;
-    border-radius: 8px;
+.card__title {
+    font-size: medium;
 }
 
-.sec-welcome-dmc__title {
-    font-weight: 800;
-    font-size: larger;
-}
 
-.sec-welcome-dmc__content {
+.content-detail__ul {
+    font-size: small;
     list-style-type: none;
+    margin-bottom: 2px;
     font-weight: 700;
 }
 
-.sec-welcome-dmc__img-wrapper {
+.content-reviews__ul {
     margin-left: 30px;
 }
 
-/*sec-welcome-dmc__img*/
-
-
-
-/*------------------------------------------------------------------------------*/
-/*                                Reviews Section                               */
-/*------------------------------------------------------------------------------*/
-/*sec-reviews__wrapper*/
-
-/*sec-reviews__title*/
-
-.sec-reviews__content {
-    margin-left: 8%;
-    font-size: smaller;
-}
-
-
-
-/*------------------------------------------------------------------------------*/
-/*                                Upgrades Section                              */
-/*------------------------------------------------------------------------------*/
-.sec {
-    margin: 10px;
-}
-
-.index__title {
-    font-size: larger;
-}
-
-/*.sec-upgrades-ul__wrapper */
-
-.sec-upgrades__content {
+.content-upgrades__ul {
     list-style-type: none;
+    
+    /* Flexbox */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Grid */
     display: grid;
-    grid-template-areas: 
-        "flux flame"
-        "bumper hub";
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas:    'flux flame'
+                            'bumper hub';
+    row-gap: 10px;
+    column-gap: 20px;
 }
 
-.sec-upgrades__card-wrapper {
-    /* Flex Box */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 8px;
-}
-
-.sec-upgrade__card {
-    /* Flex Box */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    box-sizing: border-box;
-    width: 150px;
-    height: 130px;
-    background: #1890FF;
-    border: 2px solid #093966;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-}
-
-.sec-upgrade-card__img-wrapper {
-    /* Flex Box */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    /* Sizing */
-    width: 80px;
-    height: 80px;
-}
-
-.sec-upgrade__subtitle {
-
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-    text-align: center;
-
-    color: #000000;
-}
-
-.sec-upgrades__card-wrapper--flux  {
+.ul__list-item-flux {
     grid-area: flux;
 }
 
-.sec-upgrades__card-wrapper--flame{
+.ul__list-item-flame {
     grid-area: flame;
 }
 
-.sec-upgrades__card-wrapper--bumper {
+.ul__list-item-bumper {
     grid-area: bumper;
 }
 
-.sec-upgrades__card-wrapper--hub {
+.ul__list-item-hub {
     grid-area: hub;
+}
+
+.list-item-wrapper__title {
+    font-size: medium;
+    text-align: center;
+}
+
+/*
+.ul__list-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+*/
+
+.card--transparent {
+    width: 150px;
+    height: 130px;
+    color: var(--dmc-info-card-text-color);
+    background-color: var(--dmc-card-bg-color);
+    border: 2px solid #d7d7d7;
+    position: absolute;
+    z-index: 2;
+    padding: 20px; 
+    border-radius: 10px;
+}
+
+.card--blue {
+    width: 110px;
+    height: 110px;
+    background: #1890FF;
+    border: 2px solid #0d4c86;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content__btn--default {
+    background-color: var(--primary-button-bg-default-color);
+    border: 2px solid var(--primary-button-border-color);
+    color: var(--primary-button-text-default-color);
+    margin-bottom: 4px;
+}
+
+.content__btn--default:hover {
+    background-color: var(--primary-button-bg-hover-color);
+    border: 2px solid var(--primary-button-border-color);
+    color: var(--primary-button-text-hover-color);
+    margin-bottom: 4px;
 }

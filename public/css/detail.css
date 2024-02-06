@@ -1,0 +1,29 @@
+/*------------------------------------------------------------------------------*/
+/*                                File Import(s)                                */
+/*------------------------------------------------------------------------------*/
+@import url('./style.css');
+
+/*------------------------------------------------------------------------------*/
+/*                                Detail Page                                   */
+/*------------------------------------------------------------------------------*/
+
+.vehicle-detail-card__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.vehicle-detail-card__content{
+    display: flex;
+    flex-direction: column;
+}
+
+.vehicle-detail-card__image-container {
+    width: 100%;
+    height: 100%;
+}
+
+/* vehicle-detail-card__image */
+
+/* vehicle-detail-card__text */

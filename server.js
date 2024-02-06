@@ -8,11 +8,41 @@
 const express = require("express")
 const expressLayouts = require("express-ejs-layouts") // tells the application to require express-ejs-layouts so it can be used.
 const env = require("dotenv").config()
+const session = require("express-session")
+const pool = require('./database/')
 const app = express()
+
 const static = require("./routes/static")
 const inventoryRoute = require("./routes/inventoryRoute") // brings inventoryRoute.js file into scope.
+const accountRoute = require("./routes/accountRoute")
+
 const baseController = require("./controllers/baseController") // brings baseController.js into Scope.
+
 const Util = require('./utilities/');
+
+
+/* ***********************
+ * Middleware
+ * ************************/
+app.use(session({ // Invokes the app.use() function and indicates a session will be applied.
+  store: new (require('connect-pg-simple')(session))({ // store is refering where the session data will be stored.
+    createTableIfMissing: true, // create a session table if it doesn't already exist.
+    pool, // uses our db connection pool to interact with the db server.
+  }), // closes the config data object and the new store session creation function.
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true,
+  name: 'sessionId',
+}))
+
+// Express Messages Middleware
+app.use(require('connect-flash')())
+app.use(function(req, res, next){
+  res.locals.messages = require('express-messages')(req, res)
+  next()
+})
+
+
 
 
 /* ***********************
@@ -30,13 +60,17 @@ app.use(static) // the app itself will use this resource, this line of code allo
 
 // Index route
 app.get("/", Util.handleErrors(baseController.buildHome))
+app.get("/error", Util.handleErrors(baseController.error))
 
 // Inventory routes
   // "app.use()" is an Express function that directs the app. to use the resources passed in as params.
   // "/inv" is a keyword in our app., which indicates that a route containning this word will use this route file to work with inventory-related processes.
   // "inventoryRoute" a variable representing the inventoryRoute.js file
   // Any route that starts with "/inv" will be redirected to the inventoryRoute.js file.
-app.use("/inv", inventoryRoute)
+app.use("/inv", Util.handleErrors(inventoryRoute))
+
+// Account routes
+  app.use("/account", Util.handleErrors(accountRoute))
 
 
 /* ***********************

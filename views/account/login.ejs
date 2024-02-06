@@ -1,0 +1,31 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <%- messages() %>
+    <% } else {
+        res.redirect('/')
+    } %>
+
+<!-- Block -->
+<form action="/account/login" method="post" class="form login-form"> 
+    <!-- Block Element -->  
+    <div class="form__container">
+        <!-- Element within Block -->
+        <label for="account_email" class="form__label">Email:</label>
+        <!-- Element within Block -->
+        <input type="text" placeholder="Enter Username" name="account_email" class="form__input" required>   
+
+        <!-- Element within Block -->
+        <label for="account_password" class="form__label">Password:</label> 
+        <!-- Element within Block -->
+        <span class="form__hint">Passwords must be at least 12 characters, contain at least 1 number, 1 capital letter, and 1 special character</span> 
+        <!-- Element within Block -->
+        <input type="password" name="account_password" id="accountPassword" class="form__input" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">     
+
+        <!-- Element within Block -->
+        <button type="submit" class="btn form__button">Login</button>
+
+        <!-- Element within Block -->
+        <span class="form__register">No account? <a href="/account/register">Sign-up?</a></span>
+    </div>
+</form>
+
