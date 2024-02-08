@@ -1,0 +1,71 @@
+<div class="title-container">
+    <% if (title) { %>
+        <div class="content__heading"><h1><%= title %></h1></div>
+        <%- messages() %>
+        <% } else {
+            res.redirect('/')
+        } %>
+</div>
+
+<div class="message-container">
+    <% if (errors) { %>
+        <ul class="notice">
+       <% errors.array().forEach(error => { %>
+         <li><%= error.msg %></li>
+      <%  }) %>
+       </ul>
+      <% } %>
+</div>
+
+<div class="main">
+    <!-- Block: login-container -->
+    <div class="registration-container form-container">
+        <!-- Block: login-form -->
+        <form action="/account/register" method="post" class="registration-form">
+            <!-- Block Element: login-form__container -->
+            <div class="registration-form__container">
+        
+                <!-- Block Element: login-form__field -->
+                <div class="registration-form__field">
+                    <!-- Element within Block: form__label -->
+                    <label for="account_firstname" class="form__label">First Name:</label>
+                    <!-- Element within Block: form__input -->
+                    <input type="text" placeholder="Enter your first name" name="account_firstname" class="form__input" required>
+                </div>
+        
+                <!-- Block Element: login-form__field -->
+                <div class="registration-form__field">
+                    <!-- Element within Block: form__label -->
+                    <label for="account_lastname" class="form__label">Last Name:</label>
+                    <!-- Element within Block: form__input -->
+                    <input type="text" placeholder="Enter your last name" name="account_lastname" class="form__input" required>
+                </div>
+        
+                <!-- Block Element: login-form__field -->
+                <div class="registration-form__field">
+                    <!-- Element within Block: form__label -->
+                    <label for="account_email" class="form__label">Email:</label>
+                    <!-- Element within Block: form__input -->
+                    <input type="email" placeholder="Enter a valid email" name="account_email" class="form__input" required>
+                </div>
+        
+                <!-- Block Element: login-form__field -->
+                <div class="registration-form__field">
+                    <!-- Element within Block: form__label -->
+                    <label for="account_password" class="form__label">Password:</label>
+                    <!-- Element within Block: form__hint -->
+                    <!--<span class="form__hint">Passwords must be at least 12 characters, contain at least 1 number, 1 capital letter, and 1 special character</span>-->
+                    <!-- Element within Block: form__input -->
+                    <input type="password" placeholder="Enter your password" name="account_password" id="accountPassword" class="form__input" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+                </div>
+        
+                <!-- Element within Block: btn -->
+                <button type="submit" class="form__button">Register</button>
+        
+                <!-- Element within Block: form__register -->
+                <span class="form__register">Have an account? <a href="/account/login" class="form__login-link">Login</a></span>
+            </div>
+        </form>
+        
+    </div>
+</div>

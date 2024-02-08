@@ -12,4 +12,4 @@ class IntentionalError extends Error {
     }
 }
 
-module.exports = errorController
+module.exports = errorController;

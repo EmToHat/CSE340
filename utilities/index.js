@@ -1,33 +1,42 @@
 // This file will hold functions that are "utility" in nature, meaning that we will reuse them over and over, but they don't directly belong to the M-V-C structure.
-
+const utilities = require(".")
+const { body, validationResult } = require("express-validator")
+const validate = {}
 const invModel = require("../models/inventory-model")
 const Util = {}
 
-/* ************************
- * Constructs the nav HTML unordered list
- ************************** */
+
+// ************************
+// Constructs the nav HTML unordered list
+// ************************
 Util.getNav = async function (req, res, next) {
     // Block: navigation
-    let data = await invModel.getClassifications()
-    let list = "<ul class='navigation__list'>"
-    list += '<li><a href="/" title="Home page" class="navigation__list--item">Home</a></li>'
+    let data = await invModel.getClassifications();
+    let list = "<ul class='navigation__list'>";
+
+    list += '<li><a href="/" title="Home page" class="navigation__item">Home</a></li>';
+    
     // Element within Block: navigation__list
     data.rows.forEach((row) => {
-        list += "<li>"
-        // Element within Block: navigation__list--item
+        list += "<li>";
+        
+        // Element within Block: navigation__item
         list +=
             '<a href="/inv/type/' +
             row.classification_id +
             '" title="See our inventory of ' +
             row.classification_name +
-            ' vehicles" class="navigation__list--item">' +
+            ' vehicles" class="navigation__item">' +
             row.classification_name +
-            "</a>"
-        list += "</li>"
-    })
-    list += "</ul>"
-    return list
-}
+            "</a>";
+        
+        list += "</li>";
+    });
+
+    list += "</ul>";
+    return list;
+};
+
 
 /* **************************************
  * Build the classification view HTML

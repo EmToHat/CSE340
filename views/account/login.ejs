@@ -1,31 +1,44 @@
-<% if (title) { %>
-    <h1><%= title %></h1>
-    <%- messages() %>
-    <% } else {
-        res.redirect('/')
-    } %>
+<div class="title-container">
+    <% if (title) { %>
+        <div class="content__heading"><h1><%= title %></h1></div>
+        <%- messages() %>
+        <% } else {
+            res.redirect('/')
+        } %>
+</div>
 
-<!-- Block -->
-<form action="/account/login" method="post" class="form login-form"> 
-    <!-- Block Element -->  
-    <div class="form__container">
-        <!-- Element within Block -->
-        <label for="account_email" class="form__label">Email:</label>
-        <!-- Element within Block -->
-        <input type="text" placeholder="Enter Username" name="account_email" class="form__input" required>   
+<div class="main">
+    <!-- Block: login-container -->
+    <div class="login-container form-container">
+        <!-- Block: login-form -->
+        <form action="/account/login" method="post" class="login-form">
+            <!-- Block Element: login-form__container -->
+            <div class="login-form__container">
 
-        <!-- Element within Block -->
-        <label for="account_password" class="form__label">Password:</label> 
-        <!-- Element within Block -->
-        <span class="form__hint">Passwords must be at least 12 characters, contain at least 1 number, 1 capital letter, and 1 special character</span> 
-        <!-- Element within Block -->
-        <input type="password" name="account_password" id="accountPassword" class="form__input" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">     
+                <!-- Block Element: login-form__field -->
+                <div class="login-form__field">
+                    <!-- Element within Block: form__label -->
+                    <label for="account_email" class="form__label">Email:</label>
+                    <!-- Element within Block: form__input -->
+                    <input type="text" placeholder="Enter your email" name="account_email" class="form__input" required>
+                </div>
 
-        <!-- Element within Block -->
-        <button type="submit" class="btn form__button">Login</button>
+                <!-- Block Element: login-form__field -->
+                <div class="login-form__field">
+                    <!-- Element within Block: form__label -->
+                    <label for="account_password" class="form__label">Password:</label>
+                    <!-- Element within Block: form__hint -->
+                    <!--<span class="form__hint">Passwords must be at least 12 characters, contain at least 1 number, 1 capital letter, and 1 special character</span>-->
+                    <!-- Element within Block: form__input -->
+                    <input type="password" placeholder="Enter your password" name="account_password" id="accountPassword" class="form__input" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+                </div>
 
-        <!-- Element within Block -->
-        <span class="form__register">No account? <a href="/account/register">Sign-up?</a></span>
+                <!-- Element within Block: btn -->
+                <button type="submit" class="form__button">Login</button>
+
+                <!-- Element within Block: form__register -->
+                <span class="form__register">No account? <a href="/account/register" class="form__register-link">Sign up</a></span>
+            </div>
+        </form>
     </div>
-</form>
-
+</div>

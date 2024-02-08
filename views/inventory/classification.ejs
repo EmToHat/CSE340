@@ -1,13 +1,13 @@
 <% // Block: 3 Sections - Content Heading, Message, Inventory items display %>
 
-<% // Block: Content Heading %>
-<% if (title) { %>
-  <% // Element within Block: content__heading %>
-  <div class="content__heading"><h1><%= title %></h1></div>
-<% } else {
-  // Block: Redirect
-  res.redirect('/') // redirects the response object to the default index route, to deliver the home view.
-} %>
+<div class="title-container">
+  <% if (title) { %>
+      <div class="content__heading"><h1><%= title %></h1></div>
+      <%- messages() %>
+      <% } else {
+          res.redirect('/')
+      } %>
+</div>
 
 <% // Block: Message %>
 <!-- # this comment mark disables the code below. Will later be replaced with - -->
