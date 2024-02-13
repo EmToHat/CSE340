@@ -20,16 +20,16 @@ router.get('/detail/:id', invController.showItemDetail);
 router.get('/management', invController.buildManagementTools);
 
 // Router to get the add-classification view
-router.get("/add-classification", invController.buildClassificationForm);
+router.get("/add-classification", invController.buildClassificationView);
 
 // Router to get the add-inventory view
-router.get("/add-inventory", invController.buildInventoryForm)
+router.get("/add-inventory", invController.buildInventoryView)
 
 // Process the new Classification data
 router.post(
     "/add-classification",
     classValidation.addingClassRules(),
-    classValidation.checkClassData(),
+    classValidation.checkClassData,
     Util.handleErrors(invController.addNewClassification)
 )
 
@@ -37,7 +37,7 @@ router.post(
 router.post(
     "/add-inventory",
     invValidation.addingVehicleRules(),
-    invValidation.checkVehicleData(),
+    invValidation.checkVehicleData,
     Util.handleErrors(invController.addNewInventoryItem)
 )
 

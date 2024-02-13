@@ -105,37 +105,32 @@ async function checkExistingClass(classificationName) {
 /* ***************************
  *  Insert a new inventory item
  * ************************** */
-async function insertNewInventoryItem(inventoryItemData) {
-  try {
-    const insertQuery = `
-    INSERT INTO public.inventory (
-      inv_make, inv_model, inv_year,
-      inv_description, inv_image, inv_thumbnail,
-      inv_price, inv_miles, inv_color, classification_name)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
-      RETURNING *
-    `;
-
-    const insertValues = [
-      inventoryItemData.inv_make,
-      inventoryItemData.inv_model,
-      inventoryItemData.inv_year,
-      inventoryItemData.inv_description,
-      inventoryItemData.inv_image,
-      inventoryItemData.inv_thumbnail,
-      inventoryItemData.inv_price,
-      inventoryItemData.inv_miles,
-      inventoryItemData.inv_color,
-      inventoryItemData.classification_name,
-    ];
-
-    const data = await pool.query(insertQuery, insertValues);
-
-    return data;
-  } catch (err) {
-    console.error("insertNewInventoryItem error:", err);
-    throw err;
-  }
+async function insertNewInventoryItem(
+  inv_make,
+  inv_model,
+  inv_year,
+  inv_description,
+  inv_image,
+  inv_thumbnail,
+  inv_price,
+  inv_miles,
+  inv_color,
+  classification_id
+) {
+  const insertQuery =
+    `INSERT INTO inventory (inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`
+  return await pool.query(insertQuery, [
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id,
+  ])
 }
 
 

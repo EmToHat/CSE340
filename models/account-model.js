@@ -3,12 +3,13 @@ const pool = require("../database/");
 /* *****************************
 *   Register new account
 * *************************** */
-async function registerAccount(account_firstname, account_lastname, account_email, account_password){
+async function insertNewAccount(account_firstname, account_lastname, account_email, account_password){
     try {
       const insertQuery = 
         `INSERT INTO account (account_firstname, account_lastname, account_email, account_password, account_type) 
         VALUES ($1, $2, $3, $4, 'Client') RETURNING *`;
-      const data = await pool.query(insertQuery, [account_firstname, account_lastname, account_email, account_password]);
+      
+        const data = await pool.query(insertQuery, [account_firstname, account_lastname, account_email, account_password]);
 
       return data;
     } catch (error) {
@@ -28,4 +29,4 @@ async function checkExistingEmail(account_email) {
     return error.message
   }
 }
-  module.exports = {registerAccount, checkExistingEmail};
+  module.exports = {insertNewAccount, checkExistingEmail};

@@ -165,7 +165,7 @@ Util.buildClassificationList = async function (classification_id = null) {
   };
 
 
-Util.buildInventoryManagementButtons = async function (data) {
+Util.buildInventoryManagementButtons = async function () {
     let managementButtons = `
     <button type="button" class="management__button"><a href="/inv/add-classification" class="management-button-link">Add New Classification</a></button>
     <button type="button" class="management__button"><a href="/inv/add-inventory" class="management-button-link">Add New Vehicle</a></button>

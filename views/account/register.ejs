@@ -31,7 +31,14 @@
                         <!-- Element within Block: form__label -->
                         <label for="account_firstname" class="form__label">First Name:</label>
                         <!-- Element within Block: form__input -->
-                        <input type="text" placeholder="Enter your first name" name="account_firstname" class="form__input" required>
+                        <input 
+                            type="text" 
+                            placeholder="Enter your first name" 
+                            name="account_firstname" 
+                            class="form__input" 
+                            required
+                            value="<%= locals.account_firstname %>"
+                        >
                     </div>
             
                     <!-- Block Element: login-form__field -->
@@ -39,7 +46,14 @@
                         <!-- Element within Block: form__label -->
                         <label for="account_lastname" class="form__label">Last Name:</label>
                         <!-- Element within Block: form__input -->
-                        <input type="text" placeholder="Enter your last name" name="account_lastname" class="form__input" required>
+                        <input 
+                            type="text" 
+                            placeholder="Enter your last name" 
+                            name="account_lastname" 
+                            class="form__input" 
+                            required
+                            value="<%= locals.account_lastname %>"
+                        >
                     </div>
                 </fieldset>
 
@@ -50,7 +64,14 @@
                         <!-- Element within Block: form__label -->
                         <label for="account_email" class="form__label">Email:</label>
                         <!-- Element within Block: form__input -->
-                        <input type="email" placeholder="Enter a valid email" name="account_email" class="form__input" required>
+                        <input 
+                            type="email" 
+                            placeholder="Enter a valid email" 
+                            name="account_email" 
+                            class="form__input" 
+                            required
+                            value="<%= locals.account_email %>"
+                        >
                     </div>
             
                     <!-- Block Element: login-form__field -->
@@ -58,7 +79,17 @@
                         <!-- Element within Block: form__label -->
                         <label for="account_password" class="form__label">Password:</label>
                         <!-- Element within Block: form__input -->
-                        <input type="password" placeholder="Enter your password" name="account_password" id="accountPassword" class="form__input" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+                        
+                        <!--We always make the visitor re-type the password - Always!-->
+                        <input 
+                            type="password" 
+                            placeholder="Enter your password" 
+                            name="account_password" 
+                            id="accountPassword" 
+                            class="form__input" 
+                            required 
+                            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+                            >
                         <!-- Element within Block: form__hint -->
                         <span class="form__hint">Passwords must be at least 12 characters, contain at least 1 number, 1 capital letter, and 1 special character</span>
                     </div>

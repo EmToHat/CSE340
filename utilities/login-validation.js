@@ -1,6 +1,6 @@
 const Util = require(".")
 const {body, validationResult} = require("express-validator")
-const accountModel = require("../models/inventory-model")
+const accountModel = require("../models/account-model")
 const validate = {}
 
 /*  **********************************

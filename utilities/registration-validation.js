@@ -1,6 +1,6 @@
 const Util = require(".")
 const {body, validationResult} = require("express-validator")
-const accountModel = require("../models/inventory-model")
+const accountModel = require("../models/account-model")
 const validate = {}
 
 /*  **********************************
@@ -30,7 +30,7 @@ const validate = {}
           const existingEmail = await accountModel.checkExistingEmail(account_email)
           if (existingEmail) {
             throw new Error(
-              "That email is already in use. Log in or try a different email."
+              "Email is already in use. Log in or try a different email."
             )
           }
         }),
