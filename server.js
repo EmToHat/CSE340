@@ -8,23 +8,29 @@
 const express = require("express")
 const expressLayouts = require("express-ejs-layouts") // tells the application to require express-ejs-layouts so it can be used.
 const env = require("dotenv").config()
+const app = express()
+const Util = require('./utilities/')
 const session = require("express-session")
 const pool = require('./database/')
 const bodyParser = require("body-parser")
-const app = express()
 
+// Routes
 const static = require("./routes/static")
 const inventoryRoute = require("./routes/inventoryRoute") // brings inventoryRoute.js file into scope.
 const accountRoute = require("./routes/accountRoute")
 
-const baseController = require("./controllers/baseController") // brings baseController.js into Scope.
+// Controllers
+const baseController = require("./controllers/baseController"); // brings baseController.js into Scope.
 
-const Util = require('./utilities/');
 
 
 /* ***********************
  * Middleware
  * ************************/
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+
 app.use(session({ // Invokes the app.use() function and indicates a session will be applied.
   store: new (require('connect-pg-simple')(session))({ // store is refering where the session data will be stored.
     createTableIfMissing: true, // create a session table if it doesn't already exist.
@@ -43,10 +49,6 @@ app.use(function(req, res, next){
   next()
 })
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-
-
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -54,6 +56,7 @@ app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-
 app.set("view engine", "ejs") // Declares that ejs will be the view engine for our application. 
 app.use(expressLayouts) // Tells the application to use this package that is stored into the expressLayouts variable.
 app.set("layout", "./layouts/layout") // not at views root, when express ejs layout looks for the basic template for a view, it will find it in the layouts folder with the name layout.
+
 
 /* ***********************
  * Routes
@@ -65,14 +68,10 @@ app.get("/", Util.handleErrors(baseController.buildHome))
 app.get("/error", Util.handleErrors(baseController.error))
 
 // Inventory routes
-  // "app.use()" is an Express function that directs the app. to use the resources passed in as params.
-  // "/inv" is a keyword in our app., which indicates that a route containning this word will use this route file to work with inventory-related processes.
-  // "inventoryRoute" a variable representing the inventoryRoute.js file
-  // Any route that starts with "/inv" will be redirected to the inventoryRoute.js file.
 app.use("/inv", Util.handleErrors(inventoryRoute))
 
 // Account routes
-  app.use("/account", Util.handleErrors(accountRoute))
+app.use("/account", Util.handleErrors(accountRoute))
 
 
 /* ***********************

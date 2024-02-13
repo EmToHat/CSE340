@@ -1,0 +1,16 @@
+<!--**********************************
+ *  Assignment 4: Management View
+ * ********************************* -->
+
+<div class="title-container">
+    <% if (title) { %>
+        <div class="content__heading"><h1><%= title %></h1></div>
+        <%- messages() %>
+        <% } else {
+            res.redirect('/')
+        } %>
+</div>
+
+<div class="management-button-container">
+    <%- managementButtons %>
+</div>

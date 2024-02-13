@@ -5,11 +5,23 @@
 const utilities = require("../utilities/")
 const baseController = {}
 
+class IntentionalError extends Error {
+    constructor(message = "An intentional error occurred") {
+      super(message);
+      this.name = "Intentional Error";
+    }
+  }
+
 baseController.buildHome = async function(req, res){
     const nav = await utilities.getNav()
     req.flash("notice", "This is a flash message.")
     res.render("index", {title: "Home", nav})
 }
+
+baseController.error = async function(req, res) {
+    throw new IntentionalError("This page is intentionally broken. See /controllers/baseController.js line 10.");
+};
+
 
 
 module.exports = baseController

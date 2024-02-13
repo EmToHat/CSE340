@@ -1,8 +1,9 @@
 // This file will hold functions that are "utility" in nature, meaning that we will reuse them over and over, but they don't directly belong to the M-V-C structure.
-const utilities = require(".")
+const utilties = require(".")
 const { body, validationResult } = require("express-validator")
 const validate = {}
 const invModel = require("../models/inventory-model")
+const { getClassifications } = require('../models/inventory-model')
 const Util = {}
 
 
@@ -135,6 +136,43 @@ Util.buildVehicleDetailGrid = async function(data) {
     return grid;
 };
 
+
+/* **************************************
+ * Classification List for add-inventory view
+ * ************************************ */
+Util.buildClassificationList = async function (classification_id = null) {
+    let data = await invModel.getClassifications();
+    let classificationList =
+      '<select name="classification_id" id="classificationList" >';
+    classificationList += "<option>Choose a Classification</option>";
+    data.rows.forEach((row) => {
+      classificationList += `<option value="${row.classification_id}"${
+        classification_id != null && row.classification_id == classification_id
+          ? " selected"
+          : ""
+      }>${row.classification_name}</option>`;
+      if (
+        classification_id != null &&
+        row.classification_id == classification_id
+      ) {
+        classificationList += " selected ";
+      }
+      classificationList += `>${row.classification_name}</option>}`;
+    });
+    classificationList += "</select>";
+    
+    return classificationList;
+  };
+
+
+Util.buildInventoryManagementButtons = async function (data) {
+    let managementButtons = `
+    <button type="button" class="management__button"><a href="/inv/add-classification" class="management-button-link">Add New Classification</a></button>
+    <button type="button" class="management__button"><a href="/inv/add-inventory" class="management-button-link">Add New Vehicle</a></button>
+    `;
+    return managementButtons;
+  };
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
@@ -142,4 +180,4 @@ Util.buildVehicleDetailGrid = async function(data) {
  **************************************** */
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
 
-module.exports = Util
+module.exports = Util;
