@@ -6,29 +6,34 @@ const router = new express.Router() // Using express we create a new router obje
 const accntController = require("../controllers/accountController") // Brings the invController into scope.
 const Util = require('../utilities/');
 
+// Deliver Login View
 router.get("/login", accntController.buildLoginView);
 
+// Deliver Register View
 router.get("/register", accntController.buildRegisterView);
 
+// Deliver Management View
+router.get("/", accntController.buildManagementView);
+
 // Process the login data
-/* 
-  router.post(
+router.post(
     "/login",
     logValidate.loginRules(),
     logValidate.checkLoginData,
-    //Util.handleErrors(accntController.registerNewAccount)
+    Util.handleErrors(accntController.accountLogin)
   )
-*/
+
 
 // Team Activity (Temporary)
 // Process the login attempt
+/*
 router.post(
   "/login",
   (req, res) => {
     res.status(200).send('login process')
   }
 )
-
+*/
 
 // Process the registration data
 router.post(

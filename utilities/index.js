@@ -1,10 +1,14 @@
 // This file will hold functions that are "utility" in nature, meaning that we will reuse them over and over, but they don't directly belong to the M-V-C structure.
 const utilties = require(".")
 const { body, validationResult } = require("express-validator")
-const validate = {}
+const jwt = require("jsonwebtoken")
+require("dotenv").config()
+
 const invModel = require("../models/inventory-model")
 const { getClassifications } = require('../models/inventory-model')
+
 const Util = {}
+const validate = {}
 
 
 // ************************
@@ -179,5 +183,28 @@ Util.buildInventoryManagementButtons = async function () {
  * General Error Handling
  **************************************** */
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+
+/* ****************************************
+* Middleware to check token validity
+**************************************** */
+Util.checkJWTToken = (req, res, next) => {
+    if (req.cookies.jwt) {
+     jwt.verify(
+      req.cookies.jwt,
+      process.env.ACCESS_TOKEN_SECRET,
+      function (err, accountData) {
+       if (err) {
+        req.flash("Please log in")
+        res.clearCookie("jwt")
+        return res.redirect("/account/login")
+       }
+       res.locals.accountData = accountData
+       res.locals.loggedin = 1
+       next()
+      })
+    } else {
+     next()
+    }
+   }
 
 module.exports = Util;
