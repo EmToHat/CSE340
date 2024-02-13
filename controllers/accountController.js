@@ -7,33 +7,23 @@ const accController = {} // creates an empty object in the accCont variable.
  *  Deliver login view
  * *************************************** */
 accController.buildLogin = async (req, res, next) => {
-  try {
-    let nav = await Util.getNav()
-    res.render("account/login", { // views/account/login
-      title: "Login Form",
-      nav,
-    })
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal Server Error');
-  }
+  let nav = await Util.getNav()
+  res.render("account/login", { // views/account/login
+    title: "Login Form",
+    nav,
+  })
 };
 
 /* ****************************************
  *  Deliver registration view
  * *************************************** */
 accController.buildRegister = async (req, res, next) => {
-  try {
-    let nav = await Util.getNav()
-    res.render("account/register", {
-      title: "Registration Form",
-      nav,
-      errors: null,
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal Server Error');
-  }
+  let nav = await Util.getNav()
+  res.render("account/register", {
+    title: "Registration Form",
+    nav,
+    errors: null,
+  })
 };
 
 
@@ -42,7 +32,11 @@ accController.buildRegister = async (req, res, next) => {
 * *************************************** */
 accController.registerAccount = async function (req, res, next) {
     let nav = await Util.getNav()
-    const { account_firstname, account_lastname, account_email, account_password } = req.body
+    const { 
+      account_firstname, 
+      account_lastname, 
+      account_email, 
+      account_password } = req.body
   
     // Hash the password
     const hashedPassword = await bcrypt.hash(account_password, 10);
@@ -74,4 +68,4 @@ accController.registerAccount = async function (req, res, next) {
   }
 
 
-module.exports = accController
+module.exports = accController;

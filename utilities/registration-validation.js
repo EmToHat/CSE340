@@ -6,7 +6,7 @@ const validate = {}
 /*  **********************************
  *  Registration Data Validation Rules
  * ********************************* */
-validate.registationRules = () => {
+  validate.regRules = () => {
     return [
       // firstname is required and must be string
       body("account_firstname")
@@ -22,19 +22,19 @@ validate.registationRules = () => {
   
       // valid email is required and cannot already exist in the DB
       body("account_email")
-      .trim()
-      .isEmail()
-      .normalizeEmail()
-      .withMessage("A valid email is required.")
-      .custom(async (value) => {
-          // Check if the email already exists in the database
-          const existingUser = await validate.accountModel.findOne({ account_email: value });
-          if (existingUser) {
-              throw new Error("Email already in use.");
+        .trim()
+        .isEmail()
+        .normalizeEmail() // refer to validator.js docs
+        .withMessage("A valid email is required.")
+        .custom(async (account_email) => {
+          const existingEmail = await accountModel.checkExistingEmail(account_email)
+          if (existingEmail) {
+            throw new Error(
+              "That email is already in use. Log in or try a different email."
+            )
           }
-          return true;
-      }),
-
+        }),
+  
       // password is required and must be strong password
       body("account_password")
         .trim()
@@ -59,16 +59,16 @@ validate.checkRegData = async (req, res, next) => {
     if (!errors.isEmpty()) {
       let nav = await Util.getNav()
       res.render("account/register", {
-        errors,
         title: "Registration",
         nav,
         account_firstname,
         account_lastname,
         account_email,
+        errors,
       })
       return
     }
     next()
   }
   
-  module.exports = validate
+  module.exports = validate;

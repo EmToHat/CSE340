@@ -29,7 +29,7 @@ router.get("/add-inventory", invController.buildInventoryForm)
 router.post(
     "/add-classification",
     classValidation.addingClassRules(),
-    classValidation.checkClassData,
+    classValidation.checkClassData(),
     Util.handleErrors(invController.addNewClassification)
 )
 
@@ -37,7 +37,7 @@ router.post(
 router.post(
     "/add-inventory",
     invValidation.addingVehicleRules(),
-    invValidation.checkVehicleData,
+    invValidation.checkVehicleData(),
     Util.handleErrors(invController.addNewInventoryItem)
 )
 
