@@ -13,7 +13,11 @@ router.get("/login", accntController.buildLoginView);
 router.get("/register", accntController.buildRegisterView);
 
 // Deliver Management View
-router.get("/", accntController.buildManagementView);
+router.get(
+  "/", 
+  Util.checkLogin, 
+  Util.handleErrors(accntController.buildManagementView)
+);
 
 // Process the login data
 router.post(
@@ -21,7 +25,7 @@ router.post(
     logValidate.loginRules(),
     logValidate.checkLoginData,
     Util.handleErrors(accntController.accountLogin)
-  )
+)
 
 
 // Team Activity (Temporary)

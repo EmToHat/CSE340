@@ -168,7 +168,9 @@ Util.buildClassificationList = async function (classification_id = null) {
     return classificationList;
   };
 
-
+/* **************************************
+* Inventory/Classification Managment Tool - Buttons
+* ************************************ */
 Util.buildInventoryManagementButtons = async function () {
     let managementButtons = `
     <button type="button" class="management__button"><a href="/inv/add-classification" class="management-button-link">Add New Classification</a></button>
@@ -176,6 +178,18 @@ Util.buildInventoryManagementButtons = async function () {
     `;
     return managementButtons;
   };
+
+/* ****************************************
+ *  Check Login
+ * ************************************ */
+Util.checkLogin = (req, res, next) => {
+  if (res.locals.loggedin) {
+    next()
+  } else {
+    req.flash("notice", "Please log in.")
+    return res.redirect("/account/login")
+  }
+}
 
 /* ****************************************
  * Middleware For Handling Errors
