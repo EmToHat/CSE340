@@ -68,14 +68,14 @@ invCont.buildViewVehicleDetail = async (req, res) => {
 // Purpose: This function builds the Inventory Management Tool View.
 invCont.buildViewInventoryManagement = async (req,res,next) => {
   let nav = await Util.getNavigation();
-  let selectList = await Util.buildVehicleClassificationSelectList();
   let managementButtons = await Util.buildInventoryManagementButtons();
+  let classificationList = await Util.buildVehicleClassificationSelectList();
   
-  res.render('./inventory/management', {
+  res.render('./inventory/inventory-management', {
     title: 'Inventory Management Tools',
     nav,
-    selectList,
     managementButtons,
+    classificationList,
     errors: null
   })
 }
@@ -101,13 +101,13 @@ invCont.buildViewClassificationForm = async (req, res, next) => {
 // Purpose: This function builds the Inventory Form View.
 invCont.buildViewInventoryForm = async (req, res, next) => {
   let nav = await Util.getNavigation();
-  let selectList = await Util.buildVehicleClassificationSelectList();
+  let classificationList = await Util.buildVehicleClassificationSelectList();
   res.render(
     './inventory/add-inventory', 
     {
       title: 'Add New Inventory Item',
       nav,
-      selectList,
+      classificationList,
       errors: null
     })
 }
@@ -155,7 +155,7 @@ invCont.processAddNewClassification = async (req, res, next) => {
 // Purpose: This function processes the Add Inventory.
 invCont.processAddNewInventoryItem = async function (req, res, next) {
   let nav = await Util.getNavigation()
-  let selectList = await Util.buildVehicleClassificationSelectList()
+  let classificationList = await Util.buildVehicleClassificationSelectList()
   let managementButtons = await Util.buildInventoryManagementButtons()
   const {
     inv_make,
@@ -188,7 +188,7 @@ invCont.processAddNewInventoryItem = async function (req, res, next) {
       res.status(201).render("./inventory/management", {
         title: "Inventory Management",
         nav,
-        selectList,
+        classificationList,
         managementButtons,
         errors: null,
       })
@@ -200,7 +200,7 @@ invCont.processAddNewInventoryItem = async function (req, res, next) {
       res.status(501).render("./inventory/add-inventory", {
         title: "Add New Vehicle",
         nav,
-        selectList,
+        classificationList,
         errors: null,
       })
     }
@@ -209,7 +209,7 @@ invCont.processAddNewInventoryItem = async function (req, res, next) {
     res.status(500).render("./inventory/add-inventory", {
       title: "Add New Vehicle",
       nav,
-      selectList,
+      classificationList,
       errors: null,
     })
   }
@@ -238,16 +238,16 @@ invCont.buildViewVehicleEditForm = async (req, res, next) => {
   
   let nav = await Util.getNavigation();
   const vehicleData = await invModel.retrieveVehicleDataById(inv_id);
-  const selectList = await Util.buildVehicleClassificationSelectList();
+  const classificationList = await Util.buildVehicleClassificationSelectList();
   
   const vehicleEditTitle = `${vehicleData[0].inv_make} ${vehicleData[0].inv_model}`;
 
   res.status(201).render(
-    'inventory/edit-inventory', 
+    './inventory/edit-inventory', 
     {
       title: 'Edit ' + vehicleEditTitle,
       nav,
-      classificationList: selectList,
+      classificationList: classificationList,
       errors: null,
       inv_id: vehicleData[0].inv_id,
       inv_make: vehicleData[0].inv_make,
@@ -278,12 +278,12 @@ invCont.updateVehicleData = async function (req, res, next) {
     res.redirect("/inv")
   } else {
     req.flash("notice", "Unfortunately the vehicle could not be added to inventory")
-    const selectList = await Util.buildVehicleClassificationSelectList(classification_id)
+    const classificationList = await Util.buildVehicleClassificationSelectList(classification_id)
     res.status(501).render("inventory/edit-inventory", {
       title: `Edit ${inv_make} ${inv_model}`,
       nav,
       errors: null,
-      classificationList: selectList,
+      classificationList: classificationList,
       inv_id,
       inv_make,
       inv_model,

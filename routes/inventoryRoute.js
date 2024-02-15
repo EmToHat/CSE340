@@ -24,9 +24,6 @@ router.get("/type/:classificationId", invController.buildViewByCarClassification
 // Route to get inventory item detail view
 router.get('/detail/:id', invController.buildViewVehicleDetail);
 
-// Route to get the management view
-router.get('/', invController.buildViewInventoryManagement);
-
 // Route to get inventory
 router.get('/getInventory/:classification_id', Util.handleErrors(invController.getInventoryJSON));
 
@@ -35,6 +32,13 @@ router.get("/add-classification", invController.buildViewClassificationForm);
 
 // Router to get the add-inventory view
 router.get("/add-inventory", invController.buildViewInventoryForm)
+
+// Route to get the management view
+router.get('/', 
+    Util.checkLogin,
+    Util.checkAccountType,
+    Util.handleErrors(invController.buildViewInventoryManagement)
+);
 
 // Router to get the edit vehicle info view
 router.get(
@@ -45,7 +49,7 @@ router.get(
 // Router to get the delete vehicle info view
 router.get(
     "/delete/:inv_id",
-    Util.handleErrors(invController.buildVehicleDelete)
+    Util.handleErrors(invController.buildViewDeleteConfirmation)
 );
 
 
@@ -78,5 +82,7 @@ router.post(
     Util.handleErrors(invController.updateVehicleData)
 )
 
+// Route to delete inventory
+router.post("/delete", Util.handleErrors(invController.deleteInventory))
 
 module.exports = router; // exports the router objects to be used elsewhere in the project.

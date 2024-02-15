@@ -228,11 +228,7 @@ legend,
 }
 
 /* Block: login-container */
-.login-container, 
-.registration-container,
-.add-classification-container,
-.add-inventory-container,
-.modify-inventory-container  {
+.cse-motor__form-container {
   background-color: var(--white-color);
   border-radius: 8px;
   box-shadow: 0 0 10px var(--dark-shadow-color);
@@ -241,20 +237,12 @@ legend,
 }
 
 /* Block: login-form */
-.login-form,
-.registration-form,
-.add-classification-form,
-.add-inventory-form,
-.update-inventory-form {
+.cse-motor__form {
   padding: 20px;
 }
 
 /* Block Element: login-form__container */
-.login-form__container,
-.registration-form__container,
-.add-classification-form__container,
-.add-inventory-form__container,
-.modify-inventory-form__container {
+.cse-motor-form__container {
   padding: 20px;
 }
 
@@ -328,11 +316,7 @@ legend,
   text-decoration: underline;
 }
 
-.login-form__field,
-.registration-form__field,
-.add-classification-form__field,
-.add-inventory-form__field,
-.modify-inventory-form__field {
+.cse-motor-form__field {
   margin-bottom: 10px;
 }
 
