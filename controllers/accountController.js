@@ -10,7 +10,7 @@ const accController = {} // creates an empty object in the accCont variable.
  *  Deliver login View
  * *************************************** */
 accController.buildLoginView = async (req, res, next) => {
-  let nav = await Util.getNav()
+  let nav = await Util.getNavigation()
   res.render("account/login", { // views/account/login
     title: "Login Form",
     nav,
@@ -21,7 +21,7 @@ accController.buildLoginView = async (req, res, next) => {
  *  Deliver registration View
  * *************************************** */
 accController.buildRegisterView = async (req, res, next) => {
-  let nav = await Util.getNav()
+  let nav = await Util.getNavigation()
   res.render("account/register", {
     title: "Registration Form",
     nav,
@@ -33,7 +33,7 @@ accController.buildRegisterView = async (req, res, next) => {
  *  Account Management View (After someone has logged in.)
  * *************************************** */
 accController.buildManagementView = async (req, res, next) => {
-  let nav = await Util.getNav()
+  let nav = await Util.getNavigation()
   res.render("account/management", {
     title: "Account Management",
     nav,
@@ -45,7 +45,7 @@ accController.buildManagementView = async (req, res, next) => {
 *  Process Registration
 * *************************************** */
 accController.registerNewAccount = async function (req, res, next) {
-    let nav = await Util.getNav()
+    let nav = await Util.getNavigation()
     const { 
       account_firstname, 
       account_lastname, 
@@ -89,7 +89,7 @@ accController.registerNewAccount = async function (req, res, next) {
 *  Process Login Request
 * *************************************** */
 accController.accountLogin = async function (req, res) {
-  let nav = await Util.getNav()
+  let nav = await Util.getNavigation()
   const { account_email, account_password } = req.body
   const accountData = await accountModel.getAccountByEmail(account_email)
   if (!accountData) {

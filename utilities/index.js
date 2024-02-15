@@ -5,18 +5,19 @@ const jwt = require("jsonwebtoken")
 require("dotenv").config()
 
 const invModel = require("../models/inventory-model")
-const { getClassifications } = require('../models/inventory-model')
+const { retrieveCarClassifications } = require('../models/inventory-model')
 
 const Util = {}
 const validate = {}
 
 
 // ************************
-// Constructs the nav HTML unordered list
+// Navigation Menu
 // ************************
-Util.getNav = async function (req, res, next) {
+// Purpose: builds the navigation menu based on car classifications
+Util.getNavigation = async function (req, res, next) {
     // Block: navigation
-    let data = await invModel.getClassifications();
+    let data = await invModel.retrieveCarClassifications();
     let list = "<ul class='navigation__list'>";
 
     list += '<li><a href="/" title="Home page" class="navigation__item">Home</a></li>';
@@ -44,10 +45,10 @@ Util.getNav = async function (req, res, next) {
 
 
 /* **************************************
- * Build the classification view HTML
+ * Vehicle List View
  * ************************************ */
-// declares the function as asynchronous and expects a data array as a parameter.
-Util.buildClassificationGrid = async function(data){
+// Purpose: builds a list of vehicles based on the provided data array.
+Util.buildVehiclesListView = async function(data){
 
     // Block: vehicle-grid
 let grid;
@@ -100,9 +101,10 @@ return grid;
 };
 
 /* **************************************
- * Build the vehicle detail view HTML
+ * Vehicle Detail View
  * ************************************ */
-Util.buildVehicleDetailGrid = async function(data) {
+// Prupose: builds the vehicle detail view  
+Util.buildVehicleDetailview = async function(data) {
     let grid = '';
 
     if (data.length > 0) {
@@ -142,10 +144,11 @@ Util.buildVehicleDetailGrid = async function(data) {
 
 
 /* **************************************
- * Classification List for add-inventory view
+ * Classification Select List
  * ************************************ */
-Util.buildClassificationList = async function (classification_id = null) {
-    let data = await invModel.getClassifications();
+// Purpose: builds the select list for car classifications.
+Util.buildVehicleClassificationSelectList = async function (classification_id = null) {
+    let data = await invModel.retrieveCarClassifications();
     let classificationList =
       '<select name="classification_id" id="classificationList" >';
     classificationList += "<option>Choose a Classification</option>";
@@ -169,8 +172,9 @@ Util.buildClassificationList = async function (classification_id = null) {
   };
 
 /* **************************************
-* Inventory/Classification Managment Tool - Buttons
+* Inventory/Classification Managment Tool
 * ************************************ */
+// Purpose: builds the Inventory Management Buttons -- add inventory and add classification.
 Util.buildInventoryManagementButtons = async function () {
     let managementButtons = `
     <button type="button" class="management__button"><a href="/inv/add-classification" class="management-button-link">Add New Classification</a></button>
@@ -182,11 +186,26 @@ Util.buildInventoryManagementButtons = async function () {
 /* ****************************************
  *  Check Login
  * ************************************ */
+// Purpose: check if logged in
 Util.checkLogin = (req, res, next) => {
   if (res.locals.loggedin) {
     next()
   } else {
     req.flash("notice", "Please log in.")
+    return res.redirect("/account/login")
+  }
+}
+
+/* ****************************************
+ *  Check Account Type
+ * ************************************ */
+// Purpose: check account type
+Util.checkAccountType = (req, res, next) => {
+  if (res.locals.loggedin) {
+    if (res.locals.accountData.account_type == "Admin" || res.locals.accountData.account_type == "Employee") {
+    next()
+    }
+  } else {
     return res.redirect("/account/login")
   }
 }

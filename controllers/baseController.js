@@ -13,7 +13,7 @@ class IntentionalError extends Error {
   }
 
 baseController.buildHome = async function(req, res){
-    const nav = await utilities.getNav()
+    const nav = await utilities.getNavigation()
     req.flash("notice", "This is a flash message.")
     res.render("index", {title: "Home", nav})
 }

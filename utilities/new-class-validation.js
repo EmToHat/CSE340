@@ -33,7 +33,7 @@ validate.checkClassData = async (req, res, next) => {
     let errors = [];
     errors = validationResult(req);
     if (!errors.isEmpty()) {
-        let nav = await Util.getNav();
+        let nav = await Util.getNavigation();
         res.render("./inventory/add-classification", {
             errors, 
             title: "Add New Classification Error",

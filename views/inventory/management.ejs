@@ -1,5 +1,5 @@
 <!--**********************************
- *  Assignment 4: Management View
+ *  Assignment 4: Vehicle Management View
  * ********************************* -->
 
 <div class="title-container">
@@ -14,3 +14,15 @@
 <div class="management-button-container">
     <%- managementButtons %>
 </div>
+
+<div class="inventoryManagement-container">
+    <h2 class="content__heading"> Manage Inventory </h2>
+    <p class="inventoryManagmentParagraph">Choose a classification to see those inventory items.</p>
+    <%- classificationList %>
+
+    <table id="invDisplay" class="invDisplay"></table>
+</div>
+
+<noscript>JavaScript must be enabled to use this page.</noscript>
+
+<script src="../../js/inventory.js"></script>
