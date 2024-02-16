@@ -27,17 +27,7 @@
             <!-- Block Element: login-form__container -->
             <div class="cse-motor-form__container">
                 <fieldset>
-                    <legend>Update Classification Info</legend>
-        
-                    <div class="cse-motor-form__field">
-                        <!-- Element within Block: form__label -->
-                        <label for="classification_name" class="form__label">Classification Name:</label>
-                        <%- classificationList %>
-                    </div>
-                </fieldset>
-        
-                <fieldset>
-                    <legend>Update Inventory Details</legend>
+                    <legend>Delete Vehicle</legend>
         
                     <div class="cse-motor-form__field">
                         <!-- Element within Block: form__label -->
@@ -101,7 +91,7 @@
                 </fieldset>
         
                 <!-- Element within Block: btn -->
-                <button type="submit" class="form__button" disabled>Delete Vehicle</button>
+                <button type="submit" class="form__button">Delete Vehicle</button>
         
                 <input type="hidden" name="inv_id"
                     <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
@@ -110,5 +100,3 @@
         </form>        
     </div>
 </div>
-
-<script src="../../js/inv-update.js"></script>

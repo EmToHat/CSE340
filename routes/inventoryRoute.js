@@ -83,6 +83,6 @@ router.post(
 )
 
 // Route to delete inventory
-router.post("/delete", Util.handleErrors(invController.deleteInventory))
+router.post("/delete", Util.handleErrors(invController.deleteVehicleData))
 
 module.exports = router; // exports the router objects to be used elsewhere in the project.

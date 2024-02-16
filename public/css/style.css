@@ -106,7 +106,8 @@ body {
 .section__title,
 .content__heading,
 legend,
-.vehicle-name {
+.vehicle-name,
+.account-management-welcome {
   font-family: var(--font-family-catamaran);
 }
 
@@ -121,6 +122,8 @@ legend,
 .modify,
 .delete,
 .inventoryManagmentParagraph,
+.account-management-title,
+.accountmanagement-links,
 /* Footer */
 .footer__copyright {
   font-family: var(--font-family-openSans);
@@ -149,10 +152,10 @@ legend,
 /*------------------------------------------------------------------------------*/
 .header {
   /* Flexbox */
-  display: flex;
+  display: flex; /* Use flexbox for layout */
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-between; /* Space elements evenly */
+  align-items: center; /* Center items vertically */
 
   /* Styles */
   height: 10vh;
@@ -160,9 +163,13 @@ legend,
 }
 
 .header__title-link {
-    text-decoration: none;
-    font-weight: 700;
-    color: var(--gray-color);
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--gray-color);
+}
+
+.header__title-link:hover {
+  text-decoration: underline; /* Underline link on hover */
 }
 
 .header__login-link {
@@ -173,6 +180,47 @@ legend,
 
 .header__login-link:hover {
   color: var(--blue-color);
+}
+
+.header__welcome,
+.header__login {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
+}
+
+.header__welcome {
+  margin-right: 20px; /* Add spacing to the right */
+}
+
+.header__welcome-link {
+  text-decoration: none; /* Remove underline from the link */
+  color: var(--blue-color); /* Link color */
+}
+
+.header__welcome-link:hover {
+  text-decoration: underline; /* Underline link on hover */
+}
+
+/* Styles for Login Section */
+.header__login-link,
+.header__logout-link {
+  text-decoration: none; /* Remove underline from the link */
+  color: var(--blue-color); /* Link color */
+  padding: 5px 10px; /* Add padding for spacing */
+  border: 1px solid var(--blue-color); /* Add border for a button-like appearance */
+  border-radius: 5px; /* Rounded corners for a softer look */
+}
+
+/* Styles for Logout Section on hover */
+.header__login-link:hover,
+.header__logout-link:hover {
+  background-color: var(--blue-color); /* Change background color on hover */
+  color: #fff; /* Change text color on hover */
+}
+
+.right-side {
+  display: flex;
+  flex-direction: row;
 }
 
 
@@ -655,4 +703,42 @@ select:focus {
 
 .inventoryManagmentParagraph {
   margin-bottom: 10px;
+}
+
+/* CSS Styles for Account Management Container */
+.accountManagement-container {
+  margin: 20px; /* Add margin for spacing */
+  padding: 20px; /* Add padding for spacing */
+  border: 1px solid #ccc; /* Add a border for visual separation */
+  border-radius: 5px; /* Rounded corners for a softer look */
+  background-color: #f8f8f8; /* Light background color */
+}
+
+/* Styles for the Welcome message */
+.accountManagement-container h2 {
+  color: #333; /* Dark text color */
+  margin-bottom: 10px; /* Add spacing below the heading */
+}
+
+/* Styles for the Management Links */
+.accountmanagement-links {
+  margin-bottom: 15px; /* Add spacing below the links */
+}
+
+.accountmanagement-links a {
+  display: block; /* Make the links block-level for better spacing */
+  margin-bottom: 5px; /* Add spacing between links */
+  text-decoration: none; /* Remove underline from links */
+  color: #0066cc; /* Link color */
+}
+
+.accountmanagement-links a:hover {
+  text-decoration: underline; /* Underline links on hover */
+}
+
+/* Styles for the Inventory Management heading */
+.accountManagement-container h3 {
+  color: #333; /* Dark text color */
+  margin-top: 20px; /* Add spacing above the heading */
+  margin-bottom: 10px; /* Add spacing below the heading */
 }

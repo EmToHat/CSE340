@@ -1,0 +1,27 @@
+<div class="title-container">
+    <% if (title) { %>
+        <div class="content__heading"><h1><%= title %></h1></div>
+        <%- messages() %>
+        <% } else {
+            res.redirect('/')
+        } %>
+</div>
+
+<div class="accountManagement-container">
+    <% let account = locals.accountData %>
+    <% if (locals.loggedIn) { %>
+    <h2 class="account-management-welcome">Welcome <%= account.account_firstname %>!</h2>
+    
+    <h3 class="account-management-title">Account Management</h3>
+    <div class="accountmanagement-links">
+        <a href="/account/edit/<%= account.account_id %>">Modify Your Account Information</a>
+    </div>
+    
+    <% if (account.account_type == "Employee" || account.account_type == "Admin") { %>
+        <h3 class="account-management-title">Inventory Management</h3>
+        <div class="accountmanagement-links">
+        <a href="/inv/">Manage inventory</a>
+        </div>
+    <% } %>
+    <% } %>
+</div>

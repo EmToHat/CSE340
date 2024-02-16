@@ -209,7 +209,25 @@ async function updateVehicleData(
   }
 }
 
-updateVehicleData()
+/* ***************************
+ *  Delete inventory item
+ * ************************** */
+async function deleteVehicleData(inv_id) 
+{
+  try {
+    const deleteQuery = `
+      DELETE FROM public.inventory 
+      WHERE inv_id = $1
+    `;
+
+    const result = await pool.query(deleteQuery, [inv_id]);
+
+    return result;
+  } catch (error) {
+    console.error(`Delete Inventory Error: ${error.message}`);
+    throw error;
+  }
+}
 
 module.exports = {
                   retrieveCarClassifications, 
@@ -219,5 +237,6 @@ module.exports = {
                   insertNewInventoryItem, 
                   checkExistingClass, 
                   checkExistingClassById, 
-                  updateVehicleData
+                  updateVehicleData,
+                  deleteVehicleData
                 };

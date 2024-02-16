@@ -11,9 +11,9 @@ const Util = {}
 const validate = {}
 
 
-// ************************
-// Navigation Menu
-// ************************
+/* **************************************
+ *  Navigation Menu
+ * ************************************ */
 // Purpose: builds the navigation menu based on car classifications
 Util.getNavigation = async function (req, res, next) {
     // Block: navigation
@@ -188,7 +188,7 @@ Util.buildInventoryManagementButtons = async function () {
  * ************************************ */
 // Purpose: check if logged in
 Util.checkLogin = (req, res, next) => {
-  if (res.locals.loggedin) {
+  if (res.locals.loggedIn) {
     next()
   } else {
     req.flash("notice", "Please log in.")
@@ -201,7 +201,7 @@ Util.checkLogin = (req, res, next) => {
  * ************************************ */
 // Purpose: check account type
 Util.checkAccountType = (req, res, next) => {
-  if (res.locals.loggedin) {
+  if (res.locals.loggedIn) {
     if (res.locals.accountData.account_type == "Admin" || res.locals.accountData.account_type == "Employee") {
     next()
     }
@@ -232,7 +232,7 @@ Util.checkJWTToken = (req, res, next) => {
         return res.redirect("/account/login")
        }
        res.locals.accountData = accountData
-       res.locals.loggedin = 1
+       res.locals.loggedIn = 1
        next()
       })
     } else {
