@@ -171,6 +171,7 @@ Util.buildVehicleClassificationSelectList = async function (classification_id = 
     return classificationList;
   };
 
+
 /* **************************************
 * Inventory/Classification Managment Tool
 * ************************************ */
@@ -209,6 +210,98 @@ Util.checkAccountType = (req, res, next) => {
     return res.redirect("/account/login")
   }
 }
+
+// Assignment 6
+// Pending Use - Not sure if I will use this.
+/* **************************************
+ * Inventory Report Select List
+ * ************************************ */
+// Purpose: builds the select list for inventory items.
+Util.buildReportSelectList = async function (maintenance_history_id = null) {
+  let data = await invModel.retrieveAllInventoryReports();
+  let reportList =
+      '<select name="maintenance_history_id" id="reportList" >';
+      reportList += "<option>Choose a Report</option>";
+  data.rows.forEach((row) => {
+    reportList += `<option value="${row.maintenance_history_id}"${
+        maintenance_history_id != null && row.maintenance_history_id == maintenance_history_id
+              ? " selected"
+              : ""
+          }>${row.maintenance_date} ${row.maintenance_type}</option>`;
+  });
+  reportList += "</select>";
+
+  return reportList;
+};
+
+// Assignment 6
+/* **************************************
+ * Inventory Select List
+ * ************************************ */
+// Purpose: builds the select list for car classifications.
+Util.buildVehicleInventorySelectList = async function (inv_id = null) {
+  let data = await invModel.retrieveAllVehicleInventory();
+  let vehicleInventoryList =
+    '<select name="inv_id" id="vehicleInventoryList" >';
+    vehicleInventoryList += "<option>Choose a Vehicle</option>";
+  data.rows.forEach((row) => {
+    vehicleInventoryList += `<option value="${row.inv_id}"${
+      inv_id != null && row.inv_id == inv_id
+        ? " selected"
+        : ""
+    }>${row.inv_make} ${row.inv_model}</option>`;
+    if (
+      inv_id != null &&
+      row.inv_id == inv_id
+    ) {
+      vehicleInventoryList += " selected ";
+    }
+    vehicleInventoryList += `>${row.inv_make} ${row.inv_model}</option>}`;
+  });
+  vehicleInventoryList += "</select>";
+  
+  return vehicleInventoryList;
+};
+
+/* **************************************
+ * Mechanic Select List
+ * ************************************ */
+// Purpose: builds the select list for car classifications.
+Util.buildMechanicSelectList = async function (mechanic_id = null) {
+  let data = await invModel.retrieveAllMechanics();
+  let mechanicList =
+    '<select name="mechanic_id" id="mechanicList" >';
+    mechanicList += "<option>Choose a Vehicle</option>";
+  data.rows.forEach((row) => {
+    mechanicList += `<option value="${row.mechanic_id}"${
+      mechanic_id != null && row.mechanic_id == mechanic_id
+        ? " selected"
+        : ""
+    }>${row.mechanic_firstname} ${row.mechanic_lastname}</option>`;
+    if (
+      mechanic_id != null &&
+      row.mechanic_id == mechanic_id
+    ) {
+      mechanicList += " selected ";
+    }
+    mechanicList += `>${row.mechanic_firstname} ${row.mechanic_lastname}</option>}`;
+  });
+  mechanicList += "</select>";
+  
+  return mechanicList;
+};
+
+// Assignment 6
+/* **************************************
+* Maintenance Management Buttons
+* ************************************ */
+// Purpose: builds the Maintenance Management Buttons -- add inventory and add classification.
+Util.buildMaintenanceManagementButtons = async function () {
+  let maintenanceManagementButtons = `
+  <button type="button" class="management__button"><a href="/maintenance/add-report" class="management-button-link">Add New Record</a></button>
+  `;
+  return maintenanceManagementButtons;
+};
 
 /* ****************************************
  * Middleware For Handling Errors

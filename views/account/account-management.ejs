@@ -23,5 +23,20 @@
         <a href="/inv/">Manage inventory</a>
         </div>
     <% } %>
+
+    <!-- Assignment 6 -->
+    <% if (account.account_type == "Mechanic") { %>
+        <h3 class="account-management-title">Manage Maintenance History</h3>
+        <div class="accountmanagement-links">
+            <a href="/maintenance/">Maintenance History</a>
+            
+            <a href="/maintenance/viewById/<%= maintenance.maintenance_history_id %>">View a Record</a>
+            <a href="/maintenance/viewAll/">View all Records</a>
+            <a href="/maintenance/add/">Add a Record</a>
+            <a href="/maintenance/edit/">Add a Record</a>
+            <a href="/maintenance/remove/">Remove a Record</a>
+        </div>
+    <% } %>
+
     <% } %>
 </div>

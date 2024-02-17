@@ -20,6 +20,9 @@ const static = require("./routes/static")
 const inventoryRoute = require("./routes/inventoryRoute") // brings inventoryRoute.js file into scope.
 const accountRoute = require("./routes/accountRoute")
 
+//Assignment 6
+const maintenanceRoute = require("./routes/maintenanceRoute")
+
 // Controllers
 const baseController = require("./controllers/baseController"); // brings baseController.js into Scope.
 
@@ -81,6 +84,10 @@ app.use("/inv", Util.handleErrors(inventoryRoute))
 // Account routes
 app.use("/account", Util.handleErrors(accountRoute))
 
+
+// Assignment 6
+// Account routes
+app.use("/maintenance", Util.handleErrors(maintenanceRoute))
 
 /* ***********************
 * Basic Error Handling Activity

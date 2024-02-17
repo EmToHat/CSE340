@@ -52,8 +52,6 @@ router.get(
     Util.handleErrors(invController.buildViewDeleteConfirmation)
 );
 
-
-
 /* ***************************
  *  POST
  * ************************** */
