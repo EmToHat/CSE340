@@ -21,7 +21,7 @@ const inventoryRoute = require("./routes/inventoryRoute") // brings inventoryRou
 const accountRoute = require("./routes/accountRoute")
 
 //Assignment 6
-const maintenanceRoute = require("./routes/maintenanceRoute")
+//const maintenanceRoute = require("./routes/maintenanceRoute")
 
 // Controllers
 const baseController = require("./controllers/baseController"); // brings baseController.js into Scope.
@@ -86,8 +86,8 @@ app.use("/account", Util.handleErrors(accountRoute))
 
 
 // Assignment 6
-// Account routes
-app.use("/maintenance", Util.handleErrors(maintenanceRoute))
+// Maintenance routes
+//app.use("/maintenance", Util.handleErrors(maintenanceRoute))
 
 /* ***********************
 * Basic Error Handling Activity

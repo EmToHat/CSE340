@@ -70,9 +70,55 @@ async function retrieveMaintenanceHistory()
   return data;
 }
 
+/* ***************************
+ *  retrieveAllStatusTypes
+ * ************************** */
+// Query Purpose: retrieve all the mechanics from the database.
+async function retrieveAllStatusTypes() {
+  const selectQuery = `
+    SELECT inventory_status_type
+    FROM public.inventory_status 
+  `;
+  const data = await pool.query(selectQuery);
+
+  return data;
+}
+
+/* ***************************
+ *  retrieveAllVehicleInventoryIdMakeModel
+ * ************************** */
+// Query Purpose: retrieve all the mechanics from the database.
+async function retrieveAllVehicleInventoryIdMakeModel() {
+  const selectQuery = `
+    SELECT inv_id, inv_make, inv_model
+    FROM public.inventory
+  `;
+  const data = await pool.query(selectQuery);
+
+  return data;
+}
+
+/* ***************************
+ *  retrieveAllMechanicsById
+ * ************************** */
+// Query Purpose: retrieve all the mechanics from the database.
+async function retrieveAllMechanicsById() {
+  const selectQuery = `
+    SELECT inv_id, inv_make, inv_model
+    FROM public.inventory
+  `;
+  const data = await pool.query(selectQuery);
+
+  return data;
+}
+
+
 module.exports = {
                   retrieveAllInventoryReports,
                   retrieveAllVehicleInventory,
                   retrieveAllMechanics,
-                  retrieveMaintenanceHistory
+                  retrieveMaintenanceHistory,
+                  retrieveAllStatusTypes,
+                  retrieveAllVehicleInventoryIdMakeModel,
+                  retrieveAllMechanicsById
                 };

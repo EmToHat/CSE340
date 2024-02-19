@@ -14,7 +14,7 @@
 
 <div class="main">
     <div class="cse-motor__form-container form-container">
-        <form action="/maintenance/add-record" method="post" class="cse-motor__form" id="maintenanceForm">
+        <form action="/maintenance/add-record" method="post" class="cse-motor__form" id="maintenanceEditForm">
             <div class="cse-motor-form__container">
                 <fieldset>
                     <legend>Maintenance History</legend>
@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="cse-motor-form__field">
-                        <label for="mechanic_id" class="form__label">Mechanic ID:</label>
+                        <label for="mechanic_id" class="form__label">Update Mechanic Name:</label>
                         <input
                             type="number"
                             name="mechanic_id"
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="cse-motor-form__field">
-                        <label for="cost" class="form__label">Cost:</label>
+                        <label for="cost" class="form__label">Update Cost:</label>
                         <input
                             type="number"
                             name="cost"
@@ -71,7 +71,7 @@
                     </div>
 
                     <div class="cse-motor-form__field">
-                        <label for="parts_replaced" class="form__label">Parts Replaced:</label>
+                        <label for="parts_replaced" class="form__label">Update Parts Replaced:</label>
                         <input
                             type="text"
                             name="parts_replaced"
@@ -80,7 +80,7 @@
                     </div>
 
                     <div class="cse-motor-form__field">
-                        <label for="notes" class="form__label">Notes:</label>
+                        <label for="notes" class="form__label">Update Notes:</label>
                         <textarea
                             name="notes"
                             class="form__input"
@@ -89,27 +89,17 @@
                     </div>
 
                     <div class="cse-motor-form__field">
-                        <label for="inv_id" class="form__label">Inventory ID:</label>
-                        <input
-                            type="number"
-                            name="inv_id"
-                            class="form__input"
-                            required
-                        />
+                        <label for="inv_id" class="form__label">Update Vehicle:</label>
+                        <%= await Util.buildMakeModelList(selectedMakeModel) %>
                     </div>
 
                     <div class="cse-motor-form__field">
-                        <label for="status_id" class="form__label">Status ID:</label>
-                        <input
-                            type="number"
-                            name="status_id"
-                            class="form__input"
-                            required
-                        />
+                        <label for="status_id" class="form__label">Update Status:</label>
+                        <%= await Util.buildStatusSelectList(selectedStatus) %>
                     </div>
                 </fieldset>
 
-                <button type="submit" class="form__button">Add Maintenance Record</button>
+                <button type="submit" class="form__button">Edit Maintenance Record</button>
             </div>
         </form>
     </div>

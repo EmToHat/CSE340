@@ -18,7 +18,14 @@ const mainCont = {} // creates an empty object in the invCont variable.
 /* ***************************
  *  buildViewAddReportForm
  * ************************** */
-
+mainCont.buildAddReport = async (req, res, next) => {
+    let nav = await Util.getNavigation()
+    res.render("maintenance/add-report", {
+        title: "Add New Report Form",
+        nav,
+        errors: null,
+    })
+};
 
 
 /* ***************************
