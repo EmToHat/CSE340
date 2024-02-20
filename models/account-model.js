@@ -104,4 +104,5 @@ async function updateAccountPassword(account_password, account_id) {
   }
 }
 
+
 module.exports = {insertNewUserAccount, checkIfEmailExists, retrieveUserAccountByEmail, retrieveUserAccountById, updateAccountPassword};

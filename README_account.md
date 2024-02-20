@@ -17,3 +17,24 @@ account_password: I@mAnAdm!n1strat0r
 
 test password
 account_password: hI@mAnAdm!n1strat0r98
+
+
+## Assignment 6 - Account Information
+
+### Client
+account_firstname: Steve 
+account_lastname: Lindsay
+account_email: steve.lindsay@test.com
+account_password: !BR3Cunrv@gKk
+
+### Employee
+account_firstname: Lily-Mae 
+account_lastname: Robyns
+account_email: lily.robyns@test.com
+account_password: j0H7pCAMv!#EVnn8!
+
+### Admin
+account_firstname: Charley 
+account_lastname: Villanueva
+account_email: charley.villanueva@test.com
+account_password: $*k5WS!XSm3Z9fB@

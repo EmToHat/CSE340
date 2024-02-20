@@ -7,7 +7,7 @@
  vehicleInventoryList.addEventListener("change", function () { 
   let inv_id = vehicleInventoryList.value 
   console.log(`inv_id is: ${inv_id}`) 
-  let invIdURL = "/main/getVehicleInventory/"+inv_id 
+  let invIdURL = "/maintenance/getVehicleInventory/"+inv_id 
   fetch(invIdURL) 
   .then(function (response) { 
    if (response.ok) { 

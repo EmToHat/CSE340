@@ -34,7 +34,6 @@ accountController.buildRegisterView = async (req, res, next) => {
  * *************************************** */
 accountController.buildAccountManagementHomeView = async (req, res, next) => {
   let nav = await Util.getNavigation()
-  //let account = res.locals.accountData
   res.render("account/account-management", {
     title: "Account Management",
     nav,

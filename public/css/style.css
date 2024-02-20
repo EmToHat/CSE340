@@ -292,8 +292,6 @@ main {
 }
 
 
-
-
 /* ------------------------------ FOOTER ------------------------------ */
 .footer-line {
   border-top: .001px solid var(--gray-color);
@@ -320,4 +318,9 @@ main {
   }
 }
 
-/* Add more media queries as needed for larger screens */
+
+
+.record-link-container {
+  display: flex;
+  flex-direction: column;
+}

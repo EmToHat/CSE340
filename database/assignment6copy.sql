@@ -38,6 +38,18 @@ CREATE TABLE IF NOT EXISTS public.mechanic_employee (
     certification VARCHAR(255)
 );
 
+-- Insert Record for `John Doe, Jane Smith, and Bob Johnson` into table `account`
+INSERT INTO public.account(account_firstname, account_lastname, account_email, account_password)
+VALUES 
+    ('John', 'Doe', 'john.doe@mechanic.com', 'm3cH@ni5Ce!*'),
+    ('Jane', 'Smith', 'jane.smith@mechanic.com', 'm3ch@nic!321'),
+    ('Bob', 'Johnson', 'bob.johnson@mechanic.com', '321m3ch@nic!');
+
+-- Update Record for accounts with email addresses containing 'mechanic' to have account_type as `Employee`
+UPDATE public.account 
+SET account_type = 'Employee'
+WHERE account_email LIKE '%mechanic%';
+
 -- Insert test data into inventory_status_type ENUM
 INSERT INTO public.vehicle_status (vehicle_status_type, inv_id) VALUES
     ('Available', 1),

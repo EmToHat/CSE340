@@ -27,7 +27,7 @@ const validate = {}
         .normalizeEmail() // refer to validator.js docs
         .withMessage("A valid email is required.")
         .custom(async (account_email) => {
-          const existingEmail = await accountModel.checkExistingEmail(account_email)
+          const existingEmail = await accountModel.checkIfEmailExists(account_email)
           if (existingEmail) {
             throw new Error(
               "Email is already in use. Log in or try a different email."

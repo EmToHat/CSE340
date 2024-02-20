@@ -4,6 +4,18 @@ const Util = require('../utilities/') // brings the files from the utilities fol
 const mainCont = {} // creates an empty object in the invCont variable.
 
 
+mainCont.buildViewMaintenanceHistoryManagement = async (req, res, next) => {
+    let nav = await Util.getNavigation()
+    let vehicleInventoryList = await Util.buildVehicleInventorySelectList();
+    res.render('maintenance/maintenance-history', {
+        title: 'Maintenance History Tools', 
+        nav,
+        vehicleInventoryList,
+        errors: null,
+    })
+}
+
+
 /* ***************************
  *  buildViewGetAllReports - as a list
  * ************************** */
@@ -44,8 +56,8 @@ mainCont.buildAddReport = async (req, res, next) => {
  * ************************** */
 // Purpose: This function returns vehicle inventory by classification as JSON.
 mainCont.getInventoryReportsJSON = async (req, res, next) => {
-    const classification_id = parseInt(req.params.classification_id)
-    const invData = await invModel.retrieveInventoryDataByClassificationId(classification_id)
+    const inv_id = parseInt(req.params.inv_id)
+    const invData = await invModel.retrieveInventoryDataByClassificationId(inv_id)
     if (invData[0].inv_id) {
       return res.json(invData)
     } else {
