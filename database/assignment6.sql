@@ -6,6 +6,14 @@ CREATE TABLE IF NOT EXISTS public.inventory_status (
     inv_id INTEGER NOT NULL
 );
 
+CREATE TYPE public.vehicle_status_type AS ENUM ('Available', 'Sold');
+
+CREATE TABLE IF NOT EXISTS public.vehicle_status (
+    status_id SERIAL PRIMARY KEY,
+    vehicle_status_type vehicle_status_type NOT NULL DEFAULT 'Available'::vehicle_status_type,
+    inv_id INTEGER NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS public.maintenance_history (
     maintenance_history_id SERIAL PRIMARY KEY,
     maintenance_date DATE,
@@ -31,10 +39,29 @@ CREATE TABLE IF NOT EXISTS public.mechanic_employee (
 );
 
 -- Insert test data into inventory_status_type ENUM
+INSERT INTO public.vehicle_status (vehicle_status_type, inv_id) VALUES
+    ('Available', 1),
+    ('Available', 4),
+    ('Available', 5),
+    ('Available', 6),
+    ('Available', 7),
+    ('Available', 8),
+    ('Available', 9),
+    ('Available', 10),
+    ('Available', 11),
+    ('Available', 12),
+    ('Available', 13),
+    ('Available', 14),
+    ('Available', 15),
+    ('Available', 20),
+    ('Available', 22);
+
+-- Insert test data into inventory_status_type ENUM
 INSERT INTO public.inventory_status (inventory_status_type, inv_id) VALUES
     ('Pending', 1),
     ('Approved', 2),
     ('New Arrival', 3);
+
 
 -- Insert test data into maintenance_history
 INSERT INTO public.maintenance_history (maintenance_date, maintenance_type, maintenance_description, cost, parts_replaced, notes, mechanic_id, inv_id, status_id) VALUES

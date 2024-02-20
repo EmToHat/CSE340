@@ -19,7 +19,7 @@ invCont.buildViewByCarClassificationId = async (req, res, next) => {
       let nav = await Util.getNavigation();
 
       res.render('inventory/classification', {
-        title: className + ' vehicles',
+        title: className + ' Vehicles',
         nav,
         grid,
       });

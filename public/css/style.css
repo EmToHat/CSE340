@@ -6,34 +6,42 @@
 /*------------------------------------------------------------------------------*/
 /*                                Root                                          */
 /*------------------------------------------------------------------------------*/
+/* Fonts */
 :root {
-  /* Fonts */
   --font-family-catamaran: 'Catamaran', sans-serif;
   --font-family-openSans: 'Open Sans', sans-serif;
+}
 
-  /* Colors */
+/* Colors */
+:root {
   --white-color: #ffffff;
   --darker-white-color: #d7d7d7;
-  --gray-color: #272727;
-  --light-gray-color: #ccc;
-  --medium-gray-color: #555;
-  --medium-gray-2-color: #777; 
-  --blue-color: #1890FF;
-  --dark-blue-color: #0056b3;
-  --green-color: #47d02b;
-  --dark-green-color: #32901f;
-  --red-color: #db2c2c;
-  --dark-red-color: #9a1f1f;
+
   --white-table-bg-color: #f2f2f2;
   --white-table-bg-color-2: #f9f9f9;
   --white-table-border-color: #dddddd;
 
-  /* Shadows */
-  --light-shadow-color: rgba(255, 255, 255, 0.55);
-  --dark-shadow-color: rgba(0, 0, 0, 0.5); 
+  --light-gray-color: #ccc;
+  --medium-gray-color: #555;
+  --medium-gray-2-color: #777; 
+  --gray-color: #272727;
 
-  /* Sizes */
+  --blue-color: #1890FF;
+  --dark-blue-color: #0056b3;
+
+  --green-color: #47d02b;
+  --dark-green-color: #32901f;
+
+  --red-color: #db2c2c;
+  --dark-red-color: #9a1f1f;
 }
+
+/* Shadows */
+:root {
+  --light-shadow-color: rgba(255, 255, 255, 0.55);
+  --dark-shadow-color: rgba(0, 0, 0, 0.5);
+}
+
 
 /*------------------------------------------------------------------------------*/
 /*                                Common                                        */
@@ -46,31 +54,30 @@
   box-sizing: border-box;
 }
 
-img {
-  height: 100%;
-  max-width: 100%;
-  object-fit:cover;
-}
-
-.footer-line {
-  border-top: .001px solid var(--gray-color);
-}
-
 body {
   margin: 0;
   padding: 0;
   min-height: 100vh; /* Set minimum height to 100% of the viewport height */
   display: flex;
   flex-direction: column;
+  font-family: var(--font-family-openSans);
 }
 
 .main {
-  flex: 1; /* Allow the main content to grow and take up remaining space */
-
+  /*Flex Box*/
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  flex-direction: column;
+  
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+img {
+  height: 100%;
+  max-width: 100%;
+  object-fit:cover;
 }
 
 .btn {
@@ -92,64 +99,7 @@ body {
   cursor: pointer;
 }
 
-/*------------------------------------------------------------------------------*/
-/*                                Fonts                                         */
-/*------------------------------------------------------------------------------*/
-/* Header */
-.header__title-link,
-.header__login-link,
-/* Nav */
-.navigation__item,
-/* Main */
-.title,
-.card__title,
-.section__title,
-.content__heading,
-legend,
-.vehicle-name,
-.account-management-welcome {
-  font-family: var(--font-family-catamaran);
-}
-
-/* Main */
-.content__ul,
-.list-item-wrapper__title,
-.btn,
-.vehicle-grid-card__price,
-.form__label,
-.form-footer-link,
-.vehicle,
-.modify,
-.delete,
-.inventoryManagmentParagraph,
-.account-management-title,
-.accountmanagement-links,
-/* Footer */
-.footer__copyright {
-  font-family: var(--font-family-openSans);
-}
-
-/*------------------------------------------------------------------------------*/
-/*                                cards                                         */
-/*------------------------------------------------------------------------------*/
-.card {
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.grid-cards {
-  height: 200px;
-  width: 130px;
-  box-shadow: 0px 10px 10px var(--dark-shadow-color);
-  border-radius: 10px;
-}
-
-/*------------------------------------------------------------------------------*/
-/*                            Header Styles                                     */
-/*------------------------------------------------------------------------------*/
+/* ------------------------------ HEADER ------------------------------ */
 .header {
   /* Flexbox */
   display: flex; /* Use flexbox for layout */
@@ -166,6 +116,7 @@ legend,
   text-decoration: none;
   font-weight: 700;
   color: var(--gray-color);
+  font-size: 24px;
 }
 
 .header__title-link:hover {
@@ -223,10 +174,7 @@ legend,
   flex-direction: row;
 }
 
-
-/*------------------------------------------------------------------------------*/
-/*                            Navigation Styles                                 */
-/*------------------------------------------------------------------------------*/
+/* ------------------------------ NAVIGATION ------------------------------ */
 .navigation {
   background-color: var(--gray-color);
   width: 100%;
@@ -256,489 +204,120 @@ legend,
   color: var(--blue-color);
 }
 
-/*------------------------------------------------------------------------------*/
-/*                              Footer Styles                                   */
-/*------------------------------------------------------------------------------*/
+/* ------------------------------ MAIN ------------------------------ */
+main {
+  margin: 20px;
+}
+
+/* **************************************
+ * Vehicle List View
+ * ************************************ */
+/* Container for the entire vehicle list */
+.vehicle-grid__ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(300px, 1fr)); /* Adjust the column width as needed */
+  gap: 20px; /* Adjust the gap between items */
+  list-style: none;
+  padding: 0;
+}
+
+/* Individual vehicle list item */
+.vehicle-grid__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Container for each vehicle card */
+.vehicle-grid-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column; /* Set to column to stack items vertically */
+  height: 100%; /* Ensure the card takes up 100% height */
+  width: 150px;
+}
+
+/* Image container within each vehicle card */
+.vehicle-grid-card__image-container {
+  overflow: hidden;
+}
+
+/* Vehicle image within each card */
+.vehicle-grid-card__image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px 8px 0 0; /* Adjust border radius for top corners */
+}
+
+/* Text container within each vehicle card */
+.vehicle-grid-card__text {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center text horizontally */
+}
+
+/* Vehicle title within each card */
+.vehicle-grid-card__title {
+  margin: 0;
+  font-size: 1.2em;
+  text-align: center; /* Center text horizontally */
+}
+
+/* Vehicle price within each card */
+.vehicle-grid-card__price {
+  color: #007bff;
+  font-weight: bold;
+  text-align: center; /* Center text horizontally */
+}
+
+/* Notice for no matching vehicles */
+.vehicle-grid__notice {
+  text-align: center;
+  font-style: italic;
+  color: #777;
+  margin: 20px 0;
+}
+
+
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .vehicle-grid__ul {
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); /* Full-width columns on smaller screens */
+  }
+}
+
+
+
+
+/* ------------------------------ FOOTER ------------------------------ */
+.footer-line {
+  border-top: .001px solid var(--gray-color);
+}
+
 .footer__copyright {
   text-align: center;
   padding: 10px;
   font-size: smaller;
 }
 
-/*------------------------------------------------------------------------------*/
-/*                              Form Styles                                   */
-/*------------------------------------------------------------------------------*/
-.form-container {
-  margin-top: 12px;
-  margin-bottom: 30px;
-  margin-right: 30px;
-  margin-left: 30px;
-}
 
-/* Block: login-container */
-.cse-motor__form-container {
-  background-color: var(--white-color);
-  border-radius: 8px;
-  box-shadow: 0 0 10px var(--dark-shadow-color);
-  overflow: hidden;
-  width: 350px;
-}
-
-/* Block: login-form */
-.cse-motor__form {
-  padding: 20px;
-}
-
-/* Block Element: login-form__container */
-.cse-motor-form__container {
-  padding: 20px;
-}
-
-/* Element within Block: form__label */
-.form__label {
-  display: block;
-  font-size: 14px;
-  margin-bottom: 8px;
-  color: var(--medium-gray-color);
-}
-
-/* Element within Block: form__input */
-.form__input {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid var(--light-gray-color);
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-/* Element within Block: form__hint */
-/*
-.form__hint {
-  font-size: 12px;
-  color: var(--medium-gray-2-color);
-  margin-bottom: 8px;
-  display: block;
-}*/
-
-.form__hint {
-  color: #ff0000; /* Set the text color to red or any other color you prefer */
-  font-size: 14px; /* Adjust the font size as needed */
-  font-style: italic; /* Apply italic style for emphasis */
-}
-
-/* Element within Block: btn */
-.form__button {
-  margin-bottom: 10px;
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  color: var(--white-color);
-  background-color: var(--blue-color);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.form__button:hover {
-  background-color: var(--dark-blue-color);
-}
-
-/* Element within Block: form__register */
-.form__register {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Element within Block: form__register-link */
-.form__register-link,
-.form__login-link {
-  color: var(--blue-color);
-  text-decoration: none;
-}
-
-.form__register-link:hover,
-.form__login-link:hover {
-  text-decoration: underline;
-}
-
-.cse-motor-form__field {
-  margin-bottom: 10px;
-}
-
-input:required:invalid, input:focus:invalid {
-  background-image: url(/images/invalid.png);
-  background-position: right top;
-  background-repeat: no-repeat;
- }
- 
-input:required:valid {
-  background-image: url(/images/valid.png);
-  background-position: right top;
-  background-repeat: no-repeat;
+/* Media query for screens 600px and above */
+@media screen and (min-width: 600px) {
+  .header__title-link {
+    font-size: 32px;
   }
-
-fieldset {
-  padding: 20px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  border: 1px solid var(--light-gray-color);
 }
 
-legend {
-  padding-left: 5px;
-  padding-right: 5px;
+/* Media query for screens 900px and above */
+@media screen and (min-width: 900px) {
+  .header__title-link {
+    font-size: 48px;
+  }
 }
 
-.management-button-container{
-  margin-left: 20px;
-}
-
-.management__button {
-  margin-bottom: 10px;
-  padding: 12px;
-  font-size: 16px;
-  color: var(--white-color);
-  background-color: var(--blue-color);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.management__button:hover {
-  background-color: var(--dark-blue-color);
-}
-
-.management-button-link {
-  color: var(--white-color);
-  text-decoration: none;
-}
-
-/*------------------------------------------------------------------------------*/
-/*                              Index.ejs Styles                                   */
-/*------------------------------------------------------------------------------*/
-
-
-.section {
-  position: relative;
-  margin: 20px;
-}
-
-.section__img-wrapper {
-  width: 100%; /* Ensure the image takes up the full width */
-  height: auto; /* Maintain aspect ratio */
-  z-index: 1; /* Set a lower z-index to keep the image below the card */
-}
-
-.card__title {
-  font-size: medium;
-}
-
-
-.content-detail__ul {
-  font-size: small;
-  list-style-type: none;
-  margin-bottom: 2px;
-  font-weight: 700;
-}
-
-.content-reviews__ul {
-  margin-left: 30px;
-}
-
-.content-upgrades__ul {
-  list-style-type: none;
-  
-  /* Flexbox */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  /* Grid */
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  grid-template-rows: repeat(2, auto);
-  grid-template-areas:    'flux flame'
-                          'bumper hub';
-  row-gap: 10px;
-  column-gap: 20px;
-}
-
-.ul__list-item-flux {
-  grid-area: flux;
-}
-
-.ul__list-item-flame {
-  grid-area: flame;
-}
-
-.ul__list-item-bumper {
-  grid-area: bumper;
-}
-
-.ul__list-item-hub {
-  grid-area: hub;
-}
-
-.list-item-wrapper__title {
-  font-size: medium;
-  text-align: center;
-}
-
-/*
-.ul__list-item {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-}
-*/
-
-.card--transparent {
-  width: 150px;
-  height: 130px;
-  color: var(--blue-color);
-  background-color: var(--light-shadow-color);
-  border: 2px solid var(--darker-white-color);
-  position: absolute;
-  z-index: 2;
-  padding: 20px; 
-  border-radius: 10px;
-}
-
-.card--blue {
-  width: 110px;
-  height: 110px;
-  background: var(--blue-color);
-  border: 2px solid var(--dark-blue-color);
-  box-shadow: 0px 4px 4px var(--dark-shadow-color);
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.content__btn--default {
-  background-color: var(--blue-color);
-  border: 2px solid var(--blue-color);
-  color: var(--white-color);
-  margin-bottom: 4px;
-}
-
-.content__btn--default:hover {
-  background-color: var(--white-color);
-  border: 2px solid var(--blue-color);
-  color: var(--blue-color);
-  margin-bottom: 4px;
-}
-
-/*------------------------------------------------------------------------------*/
-/*                                  Inventory view(s)                           */
-/*------------------------------------------------------------------------------*/
-.vehicle-grid__ul {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-}
-
-.vehicle-grid__item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px;
-}
-
-/*.vehicle-grid-card*/
-
-.vehicle-grid-card__container {
-  width: 100%;
-  height: 100%; 
-}
-
-.vehicle-grid-card__image-container{
-  width: 100%; /* Ensure the image takes up the full width */
-}
-
-.vehicle-grid-card__image {
-  width: 100%; /* Ensure the image takes up the full width */
-  height: auto;
-  border-radius: 10px 10px 0 0;
-}  
-
-.vehicle-grid-card__text {
-  padding: 8px;
-  margin-bottom: 10px;
-  line-height: 20px;
-
-  /* Flex Box */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.vehicle-grid-card__link {
-  font-size: medium;
-  font-family: var(--font-family-openSans);
-  color: var(--gray-color);
-  text-decoration: none;
-}
-
-.vehicle-grid-card__link:hover {
-  color: var(--blue-color);
-}
-
-.vehicle-grid-card__price {
-  margin: 10px;
-}
-
-/*------------------------------------------------------------------------------*/
-/*                                Detail Page                                   */
-/*------------------------------------------------------------------------------*/
-
-.vehicle-detail-card__container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10px;
-}
-
-.vehicle-detail-card__content{
-  display: flex;
-  flex-direction: column;
-}
-
-.vehicle-detail-card__image-container {
-  width: 100%;
-  height: 100%;
-}
-
-/* vehicle-detail-card__image */
-
-/* vehicle-detail-card__text */
-
-
-
-.inventoryManagement-container {
-    margin: 20px;
-}
-
-/* Style for the entire table */
-#invDisplay {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-/* Style for table header */
-#invDisplay th {
-  background-color: var(--white-table-bg-color);
-  border: 1px solid var(--white-table-border-color);
-  padding: 8px;
-  text-align: left;
-}
-
-/* Style for table data rows */
-#invDisplay td {
-  border: 1px solid var(--white-table-border-color);
-  padding: 8px;
-}
-
-/* Style for alternating row colors */
-#invDisplay tbody tr:nth-child(even) {
-  background-color: var(--white-table-bg-color-2);
-}
-
-.management-modify-button,
-.management-delete-button {
-  margin-bottom: 10px;
-  padding: 12px;
-  font-size: 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  text-align: center;
-}
-
-.management-modify-button {
-  background-color: var(--green-color);
-}
-
-.management-modify-button:hover {
-  background-color: var(--dark-green-color);
-}
-
-.management-delete-button {
-  background-color: var(--red-color);
-}
-
-.management-delete-button:hover {
-  background-color: var(--dark-red-color);
-}
-
-.modify,
-.delete {
-  color: var(--white-color);
-  text-decoration: none;
-}
-
-select {
-  font-size: 14px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-  color: #333;
-  outline: none;
-  transition: border-color 0.3s;
-}
-
-select:hover,
-select:focus {
-  border-color: #007bff;
-}
-
-.inventoryManagmentParagraph {
-  margin-bottom: 10px;
-}
-
-/* CSS Styles for Account Management Container */
-.accountManagement-container {
-  margin: 20px; /* Add margin for spacing */
-  padding: 20px; /* Add padding for spacing */
-  border: 1px solid #ccc; /* Add a border for visual separation */
-  border-radius: 5px; /* Rounded corners for a softer look */
-  background-color: #f8f8f8; /* Light background color */
-}
-
-/* Styles for the Welcome message */
-.accountManagement-container h2 {
-  color: #333; /* Dark text color */
-  margin-bottom: 10px; /* Add spacing below the heading */
-}
-
-/* Styles for the Management Links */
-.accountmanagement-links {
-  margin-bottom: 15px; /* Add spacing below the links */
-}
-
-.accountmanagement-links a {
-  display: block; /* Make the links block-level for better spacing */
-  margin-bottom: 5px; /* Add spacing between links */
-  text-decoration: none; /* Remove underline from links */
-  color: #0066cc; /* Link color */
-}
-
-.accountmanagement-links a:hover {
-  text-decoration: underline; /* Underline links on hover */
-}
-
-/* Styles for the Inventory Management heading */
-.accountManagement-container h3 {
-  color: #333; /* Dark text color */
-  margin-top: 20px; /* Add spacing above the heading */
-  margin-bottom: 10px; /* Add spacing below the heading */
-}
+/* Add more media queries as needed for larger screens */

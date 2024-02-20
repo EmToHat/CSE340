@@ -45,61 +45,60 @@ Util.getNavigation = async function (req, res, next) {
 };
 
 
-/* **************************************
- * Vehicle List View
- * ************************************ */
+// **************************************
+// Vehicle List View
+// **************************************
 // Purpose: builds a list of vehicles based on the provided data array.
-Util.buildVehiclesListView = async function(data){
+Util.buildVehiclesListView = async function (data) {
+  let grid;
 
-    // Block: vehicle-grid
-let grid;
-
-// an "if" to see if the array is not empty.
-if(data.length > 0){
+  if (data.length > 0) {
     // Element within Block: vehicle-grid__ul-style
     grid = '<ul class="vehicle-grid__ul">';
 
-    // sets up a "forEach" loop, to break each element of the data array into a vehicle object.
     data.forEach(vehicle => {
-        // Element within Block: vehicle-grid__li
-        grid += '<li class="vehicle-grid__item">'; // Start of li
-        grid += '<div class="vehicle-grid-card grid-cards">'; // start of vehicle grid div inv-display__image-info-container
+      // Element within Block: vehicle-grid__li
+      grid += '<li class="vehicle-grid__item">'; // Start of li
+      grid += '<div class="vehicle-grid-card grid-cards">'; // start of vehicle grid div inv-display__image-info-container
 
-        // Element within Block: vehicle-grid-card__image-container
-        grid += '<div class="vehicle-grid-card__image-container">'; // start of vehicle grid image-container div
-        grid += '<a href="../../inv/detail/' + vehicle.inv_id
-            + '" title="View ' + vehicle.inv_make + ' ' + vehicle.inv_model
-            + ' details" class="vehicle-grid-card__image-link"><img src="' + vehicle.inv_thumbnail
-            +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model
-            +' on CSE Motors" class="vehicle-grid-card__image"/></a>';
-        grid += '</div>'; // End of vehicle grid image-container div
+      // Element within Block: vehicle-grid-card__image-container
+      grid += '<div class="vehicle-grid-card__image-container">'; // start of vehicle grid image-container div
+      grid += '<a href="../../inv/detail/' + vehicle.inv_id +
+        '" title="View ' + vehicle.inv_make + ' ' + vehicle.inv_model +
+        ' details" class="vehicle-grid-card__image-link"><img src="' + vehicle.inv_thumbnail +
+        '" alt="Image of ' + vehicle.inv_make + ' ' + vehicle.inv_model +
+        ' on CSE Motors" class="vehicle-grid-card__image"/></a>';
+      grid += '</div>'; // End of vehicle grid image-container div
 
-        // Element within Block: vehicle-grid-card__text
-        grid += '<div class="vehicle-grid-card__text">'; // start of namePrice div
-        grid += '<h1 class="vehicle-grid-card__title">';
-        grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View '
-            + vehicle.inv_make + ' ' + vehicle.inv_model + ' details" class="vehicle-grid-card__link">' + vehicle.inv_make + ' ' + vehicle.inv_model + ' </a>';
-        grid += '</h1>';
+      // Element within Block: vehicle-grid-card__text
+      grid += '<div class="vehicle-grid-card__text">'; // start of namePrice div
 
-        grid += '<span class="vehicle-grid-card__price">$' + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>';
-        grid += '</div>'; // End of vehicle grid text div
+      grid += '<h1 class="vehicle-grid-card__title">';
+      grid += '<a href="../../inv/detail/' + vehicle.inv_id + '" title="View ' +
+        vehicle.inv_make + ' ' + vehicle.inv_model + ' details" class="vehicle-grid-card__link">' +
+        vehicle.inv_make + ' ' + vehicle.inv_model + ' </a>';
+      grid += '</h1>';
 
-        grid += '</div>'; // End of vehicle grid container div
+      grid += '<span class="vehicle-grid-card__price">$' + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>';
+      grid += '</div>'; // End of vehicle grid text div
 
-        grid += '</li>';// End of li
+      grid += '</div>'; // End of vehicle grid container div
+
+      grid += '</li>'; // End of li
     });
     grid += '</ul>';
-} else {
+  } else {
     // Element within Block: vehicle-grid__li
     grid += '<li class="vehicle-grid__item">';
     // Element within Block: notice
     grid += '<p class="vehicle-grid__notice">Sorry, no matching vehicles could be found.</p>';
     grid += '</li>';
-}
+  }
 
-// returns the variable to the calling location.
-return grid;
+  // returns the variable to the calling location.
+  return grid;
 };
+
 
 /* **************************************
  * Vehicle Detail View
@@ -126,6 +125,7 @@ Util.buildVehicleDetailview = async function(data) {
 
             // Element within Block: vehicle-detail-card__text
             grid += `<div class="vehicle-detail-card__text">` // Start of vehicle detail text div
+            grid += `<p>Availability: ${vehicle.vehicle_status_type}</p>`;
             grid += `<p>Year: ${vehicle.inv_year}</p>`;
             grid += `<p>Price: $${new Intl.NumberFormat('en-US').format(vehicle.inv_price)}</p>`;
             grid += `<p>Mileage: ${new Intl.NumberFormat('en-US').format(vehicle.inv_miles)}</p>`;
